@@ -1,0 +1,26 @@
+# Webfix
+
+> Webfix prüft Websites kostenlos auf SEO, KI-Sichtbarkeit (GEO), Barrierefreiheit und Datenschutz und behebt die gefundenen Probleme auf Wunsch.
+
+## So funktioniert Webfix
+
+- Scan: URL eingeben, Webfix prüft die Website. Kostenlos, ohne Anmeldung.
+- Score: Vier Teil-Scores von 0 bis 100 (SEO, GEO, Barrierefreiheit, Datenschutz & Recht) und eine Zusammenfassung.
+- Report: Ausführlicher PDF-Report mit allen Funden, Fundstellen und Lösungswegen, einmalig 29,99 €, per E-Mail.
+- Fix: Das Webfix-Team behebt die Probleme nach individuellem, unverbindlichem Angebot.
+
+## Prüfbereiche
+
+- SEO: Titel und Meta-Beschreibungen, Überschriften-Struktur, Ladezeit, Mobilfreundlichkeit, Indexierbarkeit, defekte Links, strukturierte Daten.
+- GEO (Generative Engine Optimization): Ob KI-Suchsysteme wie ChatGPT, Perplexity und Google AI Overviews die Inhalte verstehen und als Quelle nennen können; strukturierte Daten, klare Antworten, Crawler-Zugriff (robots.txt, llms.txt).
+- Barrierefreiheit (BFSG / WCAG): Kontraste, Alt-Texte, Tastaturbedienung, Formular-Beschriftungen, Überschriften-Logik, Barrierefreiheitserklärung.
+- Datenschutz & Recht (DSGVO): Cookie-Banner, extern geladene Schriften, Impressum und Datenschutzerklärung, Tools mit Datenübertragung in die USA ohne geeignete Grundlage, unverschlüsselte Formulare, Tracking ohne Einwilligung.
+
+## Hinweis
+
+Der Webfix-Scan ist eine technische Prüfung und ersetzt keine Rechtsberatung.
+
+## Links
+
+- [Startseite](https://webfix.de/)
+- [Häufige Fragen](https://webfix.de/#faq)
