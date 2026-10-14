@@ -17,7 +17,7 @@
 | 1. Scan | URL eingeben → Webfix prüft die Website | kostenlos |
 | 2. Score | Vier Teil-Scores (je x/100) + kurze Zusammenfassung direkt auf der Seite | kostenlos |
 | 3. Report | Ausführlicher PDF-Report mit allen Funden, Fundstellen und Lösungswegen, per Mail | **29,99 €** einmalig |
-| 4. Fix | Das Webfix-Team behebt die Probleme | [OFFEN] Preis/Modell |
+| 4. Fix | Kunde kontaktiert Webfix → Team behebt die Probleme | individuelles Angebot je Projekt |
 
 ### Die vier Prüfbereiche
 
@@ -59,7 +59,7 @@ Die Prüflogik wird pro Bereich in einem Claude-Skill festgehalten (z. B. `CHECK
 
 ## 6. Tonalität & Ansprache
 
-- **[ANNAHME] Sie-Form.** Abmahnangst und Rechtsthemen brauchen Vertrauen und Seriosität.
+- **Sie-Form** (bestätigt). Abmahnangst und Rechtsthemen brauchen Vertrauen und Seriosität.
 - Klar, ruhig, kompetent – keine Panikmache, kein Fachjargon ohne Erklärung.
 - Auf Angst-Marketing („Sie werden abgemahnt!“) wird bewusst verzichtet; Risiken werden sachlich benannt.
 
@@ -196,12 +196,20 @@ Button: „Beispiel-Report ansehen“ → anonymisiertes Muster-PDF. **[OFFEN]**
 
 **Headline:** Keine Zeit, es selbst zu machen? Wir beheben das für Sie.
 **Text:**
-Sie bekommen den Report und denken: „Das schaffe ich nicht allein“? Kein Problem. Unser Team behebt die gefundenen Probleme direkt auf Ihrer Website – ob WordPress, Baukasten oder mit KI gebaut.
+Sie haben Ihren Score gesehen und denken: „Das schaffe ich nicht allein“? Kein Problem. Schreiben Sie uns – wir schauen uns Ihre Website an und machen Ihnen ein unverbindliches Angebot. Welche Zugänge wir brauchen, klären wir gemeinsam, passend zu Ihrem Projekt.
 
-**Button:** Fix anfragen
-**Mikrotext:** [ANNAHME] Unverbindliches Festpreis-Angebot auf Basis Ihres Reports
+**Kontaktformular (Lead):**
+- Name *
+- E-Mail *
+- Website-URL * (wird aus dem Scan vorausgefüllt, falls vorhanden)
+- Telefon (optional)
+- Was sollen wir beheben? (optional, Freitext)
+- Checkbox Datenschutz-Einwilligung *
 
-**[OFFEN]** Preismodell für den Fix (Festpreis pro Problem / Pakete / individuelles Angebot), Bearbeitungsdauer, unterstützte Systeme, wie der Zugang zur Website läuft.
+**Button:** Unverbindlich anfragen
+**Mikrotext:** Kostenlos und unverbindlich · Wir melden uns persönlich bei Ihnen
+
+Der Fix-CTA erscheint zusätzlich direkt unter dem Score-Ergebnis – dort ist die Motivation am höchsten.
 
 ### 8.9 FAQ
 
@@ -223,6 +231,12 @@ Ja. Webfix prüft die fertige Website, egal womit sie gebaut wurde.
 **Muss ich den Fix bei Ihnen buchen?**
 Nein. Der Report ist so geschrieben, dass Sie oder Ihr Entwickler alles selbst umsetzen können.
 
+**Was kostet der Fix?**
+Das hängt davon ab, was zu tun ist. Nach Ihrer Anfrage sehen wir uns Ihre Website an und machen Ihnen ein unverbindliches Angebot.
+
+**Brauchen Sie Zugang zu meiner Website?**
+Das hängt vom Projekt ab. Ob und welche Zugänge nötig sind, besprechen wir vorab mit Ihnen – ohne Ihre Freigabe ändern wir nichts.
+
 ### 8.10 Abschluss-CTA
 
 **Headline:** Finden Sie heraus, was Ihre Website verschweigt.
@@ -233,17 +247,24 @@ Nein. Der Report ist so geschrieben, dass Sie oder Ihr Entwickler alles selbst u
 
 ## 9. Conversion-Ziele
 
-| Priorität | Aktion | Ort |
-|---|---|---|
-| 1 | URL eingeben → kostenloser Scan | Hero + Abschluss-CTA (+ Sticky-Button mobil) |
-| 2 | Report kaufen (29,99 €) | Report-Sektion, Score-Vorschau |
-| 3 | Fix anfragen | Fix-Sektion |
+**Hauptziel der Seite: Leads sammeln.** Jede Sektion führt entweder zum Scan oder zur Kontaktanfrage.
 
-## 10. Offene Punkte (vor Livegang klären)
+| Priorität | Aktion | Ort | Lead? |
+|---|---|---|---|
+| 1 | URL eingeben → kostenloser Scan | Hero (direkt), Abschluss-CTA, Sticky-Button mobil | Einstieg |
+| 2 | Fix anfragen (Kontaktformular) | unter dem Score-Ergebnis, Fix-Sektion | **ja** – Hauptlead |
+| 3 | Report kaufen (29,99 €) | Score-Ergebnis, Report-Sektion | ja – E-Mail + Käufer |
 
-1. **Fix:** Preis/Modell, Dauer, Zugang, unterstützte Systeme
-2. **Beweise:** Muster-Report, erste echte Zahlen, Testimonials
-3. **Scan-Dauer**
-4. **Branding:** Logo, Farben, Schrift, Stil-Referenzen – sonst schlage ich in der Design-Phase einen Stil vor
-5. **Bestätigen:** Sie-Form, vier Scores (SEO · GEO · Barrierefreiheit · Datenschutz & Recht), Lieferzeit des Reports
-6. **Pflichtseiten** für Webfix selbst: Impressum, Datenschutz, AGB (wegen Bezahlung), Widerrufsbelehrung – gerade ein Compliance-Tool muss hier vorbildlich sein.
+**Empfehlung (zur Entscheidung):** Optional „Ergebnis per E-Mail zusenden“ unter dem Score anbieten – freiwillig, damit der Scan weiterhin ohne Anmeldung funktioniert, aber mehr Besucher eine E-Mail-Adresse hinterlassen.
+
+## 10. Design-Ausgangslage
+
+Es gibt kein Logo und keinen Farbstil. In der Design-Phase schlage ich eine Wortmarke „Webfix“ und einen Stil vor. Der Stil soll **Premium, ruhig und vertrauenswürdig** wirken, nicht nach Hacker- oder Alarm-Optik aussehen.
+
+## 11. Offene Punkte (vor Livegang klären)
+
+1. **Beweise:** Muster-Report, erste echte Zahlen, Testimonials
+2. **Scan-Dauer** (FAQ-Platzhalter: „wenige Minuten“)
+3. **Lieferzeit des Reports** nach Kauf
+4. **Pflichtseiten** für Webfix selbst: Impressum, Datenschutz, AGB (wegen Bezahlung), Widerrufsbelehrung – gerade ein Compliance-Tool muss hier vorbildlich sein.
+5. **Wohin gehen die Leads?** (E-Mail-Postfach, CRM, Tool) – für die technische Umsetzung des Formulars
