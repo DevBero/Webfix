@@ -19,7 +19,7 @@ colors:
   surface-sunken: "#E9E9EB"
   surface-warm: "#F8F8F3"
   on-surface-variant: "#515A63"
-  on-surface-subtle: "#6E797B"
+  on-surface-subtle: "#636E73"
   outline: "#E2E4E5"
   outline-strong: "#D4D7D7"
   inverse-surface: "#1F2429"
@@ -300,6 +300,8 @@ Die Wirkung entsteht aus wenigen Entscheidungen, die konsequent durchgezogen wer
 - **Echte Produkt-UI statt Illustration.** Scores, Prüfpunkte, Code-Ausschnitte und Statuszeilen werden als echte, fein gestaltete UI-Fragmente gezeigt. Diese Fragmente sind die Bildsprache.
 - **Viel Luft, wenig Bewegung.** Großzügige Sektionsabstände (80px oben, 120px unten). Bewegung dient dem Lesen und lenkt nicht ab.
 
+**Logo:** Eine Wortmarke „Webfix“ in Inter Tight ExtraBold (800) mit −3 % Laufweite. Einziges Merkmal ist der i-Punkt in Signalblau, der „Fix-Punkt“. Dazu gibt es ein Icon (W + Fix-Punkt im gerundeten Quadrat). Dateien liegen in `brand/logo/`, alle Regeln im Markenhandbuch `brand/index.html`. ExtraBold kommt nur im Logo vor, nie im Interface.
+
 Zielgefühl: Kompetenz ohne Lautstärke. Seriös genug für Geschäftsführer und Kanzleien, modern genug für Agenturen.
 
 ## Colors
@@ -381,7 +383,7 @@ Innerhalb einer Ebene werden scharfe und gerundete Ecken nicht gemischt.
 - **Primary Button:** Blau (#2F68DB) mit weißer Schrift, 14px Semibold, 8px Radius, 40px Höhe. Er steht meist **in** einer weißen Eingabegruppe rechts (URL-Feld + Button als ein Objekt). Hover: #264EB4 in 150ms.
 - **Pill-CTA (sekundär):** Tinte bzw. Creme, voll gerundet, Text links und rechts eine runde 32px-Kappe mit Pfeil-Icon. Für „Beispiel-Report ansehen“ oder „Unverbindlich anfragen“.
 - **Ghost/Secondary:** Hellgrau (#E9E9EB) und kompakt, z. B. „Mehr erfahren“.
-- **URL-Eingabe:** Weiß mit 1px-Innenlinie #E2E4E5, 10px Radius und 48px Höhe. Platzhalter in #6E797B. Bei Fokus 2px-Ring in Blau mit 25 % Deckkraft.
+- **URL-Eingabe:** Weiß mit 1px-Innenlinie #E2E4E5, 10px Radius und 48px Höhe. Platzhalter in #636E73. Bei Fokus 2px-Ring in Blau mit 25 % Deckkraft.
 - **Navigation:** 64px hoch auf Weiß. Logo links, 14px-Links in Schiefer in der Mitte, rechts „Login“ als Textlink und der blaue Button.
 - **Eyebrow-Chip:** Kleiner Creme-Chip mit 13px-Text über Sektions-Headlines, z. B. „So funktioniert's“. Auf Dunkel als Text in 50 % Weiß ohne Chip.
 - **Score-Karte:** Weiß, 16px Radius. Große Zahl (40px, Tabellenziffern), daneben „/100“ in Schiefer. Darunter ein 4px-Balken mit 2px Radius in Blau auf #E9E9EB und darunter Status-Badges.

@@ -1,0 +1,1435 @@
+<title>Webfix Markenhandbuch</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Markenhandbuch von Webfix: Logo, Farben, Typografie, Layout, Komponenten, Bildsprache, Bewegung und Sprache.">
+<style>
+/* Layout: Nebelgrund, darauf eingerückte weiße Kapitel-Blätter; links ein ruhiges Inhaltsverzeichnis.
+   Bewusst nur ein (helles) Erscheinungsbild: Das Handbuch zeigt die echten Markenflächen. */
+:root {
+  color-scheme: light;
+  --ink: #1A1E23;
+  --slate: #515A63;
+  --subtle: #636E73;
+  --mist: #F2F7F7;
+  --white: #FFFFFF;
+  --muted: #F1F2F2;
+  --sunken: #E9E9EB;
+  --cream: #F8F8F3;
+  --line: #E2E4E5;
+  --line-strong: #D4D7D7;
+  --graphite: #1F2429;
+  --graphite-2: #2B3239;
+  --graphite-3: #38414A;
+  --on-dark-2: #A6ADB3;
+  --on-dark-line: rgba(255,255,255,.12);
+  --blue: #2F68DB;
+  --blue-hover: #264EB4;
+  --blue-soft: #E7F5FD;
+  --blue-on-dark: #659FFD;
+  --success: #1E7F4F; --success-soft: #D9FDD3;
+  --warning: #9A5B00; --warning-soft: #FFF4D6;
+  --error: #C62445; --error-soft: #FCEBEF;
+
+  --serif: "Newsreader", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --sans: "Inter Tight", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --r-sm: 8px; --r-md: 10px; --r-lg: 16px; --r-xl: 24px; --r-2xl: 32px;
+  --shadow-1: 0 1px 3px 1px rgba(22,26,30,.01), 0 4px 8px -6px rgba(22,26,30,.08), 0 1px 5px -4px rgba(22,26,30,.08);
+  --shadow-float: 0 20px 44px -18px rgba(22,26,30,.12), 0 16px 28px -18px rgba(22,26,30,.12), 0 12px 20px -18px rgba(22,26,30,.08);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-word: cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+{{FONTFACE}}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--mist);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  padding-left: max(12px, env(safe-area-inset-left, 0px));
+  padding-right: max(12px, env(safe-area-inset-right, 0px));
+  padding-block: 12px 48px;
+}
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 4px; }
+a { color: var(--blue); text-underline-offset: 3px; }
+a:hover { color: var(--blue-hover); }
+p { margin: 0; }
+h1, h2, h3, h4 { margin: 0; text-wrap: balance; font-weight: 400; }
+code, .mono { font-family: var(--mono); font-size: .8em; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- Wordmark helpers ---------- */
+svg.wm { display: block; height: auto; aspect-ratio: {{WM_AR}}; overflow: visible; }
+.wm-std { --wm-fg: var(--ink); --wm-dot: var(--blue); }
+.wm-dark { --wm-fg: var(--white); --wm-dot: var(--blue-on-dark); }
+.wm-mono-ink { --wm-fg: var(--ink); --wm-dot: var(--ink); }
+.wm-mono-white { --wm-fg: var(--white); --wm-dot: var(--white); }
+
+/* ---------- Frame ---------- */
+.frame { max-width: 1440px; margin: 0 auto; display: grid; gap: 12px; }
+.layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 12px; align-items: start; }
+.toc {
+  position: sticky; top: calc(12px + env(safe-area-inset-top, 0px));
+  background: var(--white); border-radius: var(--r-lg); padding: 20px 12px;
+  max-height: calc(100vh - 24px); overflow: auto;
+}
+.toc-head { padding: 0 8px 16px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+.toc-head svg { width: 92px; }
+.toc-head p { font-size: 12px; color: var(--subtle); margin-top: 8px; }
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; }
+.toc a {
+  display: grid; grid-template-columns: 28px 1fr; align-items: baseline;
+  padding: 7px 8px; border-radius: var(--r-sm); color: var(--slate);
+  text-decoration: none; font-size: 14px; transition: background-color .15s ease, color .15s ease;
+}
+.toc a span { font-family: var(--mono); font-size: 11px; color: var(--subtle); }
+.toc a:hover { background: var(--muted); color: var(--ink); }
+.toc a[aria-current="true"] { background: var(--mist); color: var(--ink); }
+.toc a[aria-current="true"] span { color: var(--blue); }
+main { display: grid; gap: 12px; min-width: 0; }
+
+.sheet {
+  background: var(--white); border-radius: var(--r-lg);
+  padding: 80px 72px 112px; min-width: 0; scroll-margin-top: 12px;
+}
+.sheet.dark { background: var(--graphite); color: var(--white); }
+.sheet.cream { background: var(--cream); border-radius: var(--r-2xl); }
+
+/* ---------- Chapter heads ---------- */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 500; color: var(--slate);
+  background: var(--cream); border-radius: var(--r-sm); padding: 4px 10px;
+}
+.eyebrow .n { font-family: var(--mono); font-size: 11px; color: var(--blue); }
+.dark .eyebrow { background: transparent; padding: 0; color: rgba(255,255,255,.5); }
+.dark .eyebrow .n { color: var(--blue-on-dark); }
+.cream .eyebrow { background: var(--white); }
+.chapter-head { display: grid; gap: 20px; max-width: 760px; margin-bottom: 56px; justify-items: start; }
+.display-xl { font-family: var(--serif); font-weight: 300; font-size: clamp(44px, 6.4vw, 88px); line-height: 1.02; letter-spacing: -0.03em; }
+.display-lg { font-family: var(--serif); font-weight: 300; font-size: clamp(36px, 4.4vw, 48px); line-height: 1.12; letter-spacing: -0.02em; }
+.headline-md { font-family: var(--serif); font-weight: 300; font-size: 28px; line-height: 1.2; letter-spacing: -0.02em; }
+.title { font-size: 20px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.3; }
+.lead { font-size: 18px; line-height: 1.6; color: var(--slate); max-width: 660px; }
+.dark .lead { color: var(--on-dark-2); }
+.small { font-size: 14px; line-height: 1.6; color: var(--slate); }
+.dark .small { color: var(--on-dark-2); }
+.caption { font-size: 12px; line-height: 1.45; color: var(--subtle); }
+.dark .caption { color: var(--on-dark-2); }
+.two-tone { color: var(--ink); }
+.two-tone em { font-style: normal; color: rgba(26,30,35,.5); }
+.dark .two-tone { color: var(--white); }
+.dark .two-tone em { color: rgba(255,255,255,.5); }
+
+.block { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; margin-top: 72px; }
+.block:first-of-type { margin-top: 0; }
+.block-head { display: grid; gap: 8px; max-width: 660px; }
+.block-head h3 { font-size: 24px; letter-spacing: -0.02em; line-height: 1.2; }
+.rule { border: 0; border-top: 1px solid var(--line); margin: 72px 0 0; }
+.dark .rule { border-top-color: var(--on-dark-line); }
+
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+
+.panel { background: var(--mist); border-radius: var(--r-lg); padding: 24px; min-width: 0; }
+.panel.white { background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.dark .panel { background: var(--graphite-2); box-shadow: inset 0 0 0 1px var(--on-dark-line); }
+.panel h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+
+.list { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.list li { display: grid; grid-template-columns: 18px 1fr; gap: 10px; font-size: 15px; line-height: 1.55; }
+.list li svg { margin-top: 3px; }
+.list.yes li svg { color: var(--success); }
+.list.no li svg { color: var(--error); }
+
+/* ---------- Cover ---------- */
+.cover { padding-top: 40px; padding-bottom: 40px; display: grid; gap: 96px; }
+.cover-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.cover-top .meta { display: flex; gap: 8px; flex-wrap: wrap; }
+.pill { display: inline-flex; align-items: center; gap: 6px; background: var(--sunken); border-radius: 999px; padding: 6px 14px; font-size: 13px; color: var(--ink); }
+.cover-mark { display: grid; gap: 40px; }
+.cover-mark svg.wm { width: min(100%, 860px); }
+.cover-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 48px; align-items: end; border-top: 1px solid var(--line); padding-top: 32px; }
+.stat-row { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 14px; color: var(--slate); align-items: center; }
+.stat-row b { color: var(--ink); font-weight: 600; }
+.stat-row i { font-style: normal; color: var(--line-strong); }
+
+/* ---------- Brand core ---------- */
+.promise { font-family: var(--serif); font-weight: 300; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.18; letter-spacing: -0.02em; max-width: 920px; }
+.promise mark { background: none; color: var(--blue); }
+.value { display: grid; gap: 14px; align-content: start; }
+.value .k { display: flex; align-items: center; gap: 10px; }
+.value .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--blue); flex: none; }
+.value h4 { font-size: 20px; font-weight: 500; margin: 0; letter-spacing: -0.01em; }
+.value dl { margin: 0; display: grid; gap: 10px; font-size: 14px; line-height: 1.55; }
+.value dt { font-size: 12px; color: var(--subtle); }
+.value dd { margin: 0; }
+
+.axes { display: grid; gap: 22px; }
+.axis { display: grid; grid-template-columns: 150px minmax(0, 1fr) 150px; align-items: center; gap: 16px; font-size: 14px; }
+.axis .l { color: var(--subtle); }
+.axis .r { color: var(--subtle); text-align: right; }
+.axis .l.on, .axis .r.on { color: var(--ink); font-weight: 600; }
+.track { position: relative; height: 2px; background: var(--line); border-radius: 2px; }
+.track::before, .track::after { content: ""; position: absolute; top: -4px; width: 1px; height: 10px; background: var(--line-strong); }
+.track::before { left: 0; } .track::after { right: 0; }
+.track b { position: absolute; top: 50%; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 4px var(--white); }
+
+.audience { display: grid; gap: 12px; align-content: start; }
+.audience .q { font-family: var(--serif); font-weight: 300; font-size: 22px; line-height: 1.3; letter-spacing: -0.01em; }
+.audience .who { font-size: 13px; color: var(--subtle); }
+
+/* ---------- Logo ---------- */
+.logo-stage { background: var(--mist); border-radius: var(--r-lg); padding: clamp(32px, 8vw, 112px) clamp(20px, 6vw, 96px); display: grid; place-items: center; }
+.logo-stage svg.wm { width: min(100%, 640px); }
+.anatomy { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 16px; }
+.anatomy-figure { background: var(--white); box-shadow: inset 0 0 0 1px var(--line); border-radius: var(--r-lg); padding: 40px 32px; display: grid; gap: 24px; align-content: center; min-width: 0; }
+.anatomy-figure svg { width: 100%; height: auto; display: block; }
+.spec { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 12px 20px; font-size: 14px; }
+.spec dt { color: var(--subtle); }
+.spec dd { margin: 0; font-weight: 500; }
+
+.variants { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.variant { border-radius: var(--r-lg); overflow: hidden; display: grid; grid-template-rows: 200px auto; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); min-width: 0; }
+.variant .stage { display: grid; place-items: center; padding: 32px; }
+.variant .stage svg.wm { width: min(100%, 220px); }
+.variant .stage img, .variant .stage svg.icon { width: 96px; height: 96px; }
+.variant .info { padding: 16px 20px 20px; display: grid; gap: 4px; border-top: 1px solid var(--line); }
+.variant .info b { font-size: 14px; font-weight: 600; }
+
+.sizes { display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-end; }
+.sizes figure { margin: 0; display: grid; gap: 12px; justify-items: start; }
+
+.misuse { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.misuse figure { margin: 0; display: grid; gap: 10px; }
+.misuse .stage { height: 140px; border-radius: var(--r-md); background: var(--mist); display: grid; place-items: center; overflow: hidden; padding: 20px; position: relative; }
+.misuse .stage svg.wm { width: min(150px, 86%); }
+.misuse figcaption { display: grid; grid-template-columns: 16px 1fr; gap: 8px; font-size: 13px; line-height: 1.45; color: var(--slate); }
+.misuse figcaption svg { color: var(--error); margin-top: 2px; }
+.misuse .busy { background: radial-gradient(circle at 20% 30%, #F7B267 0, transparent 45%), radial-gradient(circle at 80% 70%, #F25F8C 0, transparent 50%), linear-gradient(120deg, #9AD1D4, #F7EF99); }
+.misuse .fake { font-family: Georgia, serif; font-style: italic; font-size: 40px; color: var(--ink); }
+
+/* ---------- Colour ---------- */
+.swatches { display: grid; gap: 16px; }
+.swatches.primary { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.swatches.secondary { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.swatch { border-radius: var(--r-lg); overflow: hidden; box-shadow: inset 0 0 0 1px var(--line); background: var(--white); display: grid; grid-template-rows: auto 1fr; min-width: 0; }
+.swatch .chip { height: 168px; padding: 16px; display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; }
+.swatches.secondary .swatch .chip, .swatches.status .swatch .chip { height: 112px; }
+.swatch .chip .name { font-family: var(--serif); font-weight: 300; font-size: 26px; letter-spacing: -0.02em; line-height: 1; }
+.swatch .chip .role { font-size: 12px; opacity: .8; }
+.swatch .data { padding: 14px 16px 16px; display: grid; gap: 6px; font-size: 12px; }
+.swatch .data div { display: flex; justify-content: space-between; gap: 8px; }
+.swatch .data dt { color: var(--subtle); }
+.swatch .data dd { margin: 0; font-family: var(--mono); font-size: 12px; text-align: right; }
+.copy { appearance: none; border: 0; background: var(--muted); color: var(--ink); font: 500 12px/1 var(--mono); padding: 6px 8px; border-radius: 6px; cursor: pointer; transition: background-color .15s ease; }
+.copy:hover { background: var(--sunken); }
+.copy.done { background: var(--success-soft); color: var(--success); }
+.swatch .data .use { font-family: var(--sans); color: var(--slate); font-size: 13px; line-height: 1.5; margin-top: 4px; }
+.swatches.status { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.ratio { display: flex; height: 64px; border-radius: var(--r-md); overflow: hidden; box-shadow: inset 0 0 0 1px var(--line); }
+.ratio div { display: flex; align-items: flex-end; padding: 8px 10px; font-size: 12px; font-weight: 500; min-width: 0; white-space: nowrap; overflow: hidden; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 13px; color: var(--slate); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.legend i { width: 10px; height: 10px; border-radius: 3px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
+
+.table-wrap { overflow-x: auto; border-radius: var(--r-lg); box-shadow: inset 0 0 0 1px var(--line); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 640px; }
+th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+th { font-size: 12px; font-weight: 500; color: var(--subtle); background: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td.num { font-variant-numeric: tabular-nums; font-family: var(--mono); font-size: 13px; }
+.sample { display: inline-flex; align-items: center; padding: 6px 12px; border-radius: 6px; font-weight: 500; font-size: 14px; }
+.badge { display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; padding: 2px 9px; font-size: 12px; font-weight: 500; line-height: 1.5; white-space: nowrap; }
+.badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.b-ok { background: var(--success-soft); color: var(--success); }
+.b-warn { background: var(--warning-soft); color: var(--warning); }
+.b-err { background: var(--error-soft); color: var(--error); }
+.b-info { background: var(--blue-soft); color: var(--blue-hover); }
+.b-info::before, .b-plain::before { display: none; }
+
+/* ---------- Typography ---------- */
+.specimen { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 16px; }
+.specimen .big { border-radius: var(--r-lg); background: var(--mist); padding: 40px 32px; display: grid; gap: 24px; align-content: space-between; min-height: 320px; min-width: 0; }
+.specimen .glyphs { font-size: clamp(64px, 9vw, 128px); line-height: .9; letter-spacing: -0.03em; }
+.specimen .alpha { font-size: 18px; line-height: 1.5; color: var(--slate); word-break: break-word; }
+.specimen .facts { display: grid; gap: 16px; align-content: start; }
+.f-serif { font-family: var(--serif); font-weight: 300; }
+.f-sans { font-family: var(--sans); }
+.f-mono { font-family: var(--mono); }
+.weights { display: flex; flex-wrap: wrap; gap: 8px; }
+.weights span { background: var(--white); box-shadow: inset 0 0 0 1px var(--line); border-radius: 6px; padding: 4px 10px; font-size: 13px; }
+
+.scale { display: grid; }
+.scale-row { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 24px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.scale-row:last-child { border-bottom: 0; }
+.scale-row .meta { display: grid; gap: 2px; font-size: 12px; color: var(--subtle); }
+.scale-row .meta b { font-family: var(--mono); font-weight: 500; font-size: 12px; color: var(--ink); }
+.scale-row .ex { min-width: 0; overflow-wrap: anywhere; }
+
+.micro-typo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; }
+.micro-typo div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.micro-typo .ok { font-weight: 500; }
+.micro-typo .bad { color: var(--subtle); text-decoration: line-through; text-decoration-color: var(--error); }
+
+/* ---------- Layout chapter ---------- */
+.space-scale { display: grid; gap: 10px; }
+.space-scale div { display: grid; grid-template-columns: 64px 64px minmax(0, 1fr); align-items: center; gap: 16px; font-size: 13px; }
+.space-scale code { color: var(--subtle); font-size: 12px; }
+.space-scale i { display: block; height: 12px; background: var(--blue); border-radius: 2px; opacity: .85; }
+.cols { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 8px; height: 120px; }
+.cols i { background: var(--blue-soft); border-radius: 4px; }
+.page-model { background: var(--mist); border-radius: var(--r-lg); padding: 10px; display: grid; gap: 8px; }
+.page-model div { border-radius: 10px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; font-size: 12px; gap: 12px; }
+.page-model .w { background: var(--white); color: var(--slate); }
+.page-model .g { background: var(--graphite); color: var(--on-dark-2); }
+.page-model .c { background: var(--cream); color: var(--slate); border-radius: 14px; }
+.page-model .m { background: transparent; color: var(--subtle); box-shadow: inset 0 0 0 1px var(--line-strong); border-style: dashed; }
+.page-model b { font-weight: 600; color: inherit; }
+
+/* ---------- Shapes ---------- */
+.radii { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 12px; }
+.radii figure { margin: 0; display: grid; gap: 10px; font-size: 12px; color: var(--subtle); }
+.radii .shape { aspect-ratio: 1; max-width: 100%; background: var(--mist); box-shadow: inset 0 0 0 1px var(--line-strong); }
+.radii b { display: block; font-family: var(--mono); font-weight: 500; color: var(--ink); }
+.shadows { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; background: var(--mist); border-radius: var(--r-lg); padding: 40px; }
+.shadows figure { margin: 0; display: grid; gap: 14px; }
+.shadows .card { height: 120px; border-radius: var(--r-lg); background: var(--white); }
+
+/* ---------- Components ---------- */
+.btn { appearance: none; border: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font: 600 14px/20px var(--sans); border-radius: var(--r-sm); padding: 10px 14px; text-decoration: none; transition: background-color .15s ease, transform .12s ease, box-shadow .15s ease; white-space: nowrap; }
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--blue); color: var(--white); box-shadow: inset 0 -1px 0 rgba(0,0,0,.16); }
+.btn-primary:hover { background: var(--blue-hover); color: var(--white); }
+.btn-secondary { background: var(--sunken); color: var(--ink); }
+.btn-secondary:hover { background: var(--line-strong); color: var(--ink); }
+.btn-ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--line-strong); }
+.btn-ghost:hover { background: var(--muted); color: var(--ink); }
+.btn-pill { background: var(--ink); color: var(--white); border-radius: 999px; padding: 6px 6px 6px 20px; gap: 14px; }
+.btn-pill:hover { background: #000; color: var(--white); }
+.btn-pill .cap { width: 32px; height: 32px; border-radius: 50%; background: var(--white); color: var(--ink); display: grid; place-items: center; }
+.btn-dark { background: var(--graphite-3); color: #D4D7D7; border-radius: var(--r-md); padding: 10px 16px; }
+.btn-dark:hover { background: #45505A; color: var(--white); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+.url-group { display: flex; align-items: center; gap: 8px; background: var(--white); border-radius: var(--r-md); padding: 4px 4px 4px 14px; box-shadow: inset 0 0 0 1px var(--line), 0 8px 42px -16px rgba(22,26,30,.08); max-width: 440px; transition: box-shadow .15s ease; }
+.url-group:focus-within { box-shadow: inset 0 0 0 1px var(--blue), 0 0 0 3px rgba(47,104,219,.25); }
+.url-group input { flex: 1; min-width: 0; width: 100%; border: 0; outline: 0; background: transparent; font: 400 14px/1.4 var(--sans); color: var(--ink); height: 40px; }
+.url-group input::placeholder { color: var(--subtle); }
+.url-group .btn:focus-visible { outline-offset: 1px; }
+.form-msg { font-size: 13px; margin-top: 8px; min-height: 20px; }
+.form-msg.err { color: var(--error); }
+.form-msg.ok { color: var(--success); }
+
+.scores { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.score { background: var(--white); border-radius: var(--r-lg); padding: 20px; box-shadow: var(--shadow-1); display: grid; gap: 14px; min-width: 0; }
+.score .top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; }
+.score .area { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; }
+.score .val { display: flex; align-items: baseline; gap: 4px; }
+.score .val b { font-size: 40px; font-weight: 500; letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+.score .val span { color: var(--subtle); font-size: 14px; }
+.bar { height: 4px; border-radius: 2px; background: var(--sunken); overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--blue); border-radius: 2px; }
+
+.checks { background: var(--white); border-radius: var(--r-lg); box-shadow: var(--shadow-1); overflow: hidden; }
+.check { display: grid; grid-template-columns: 24px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 14px 20px; border-bottom: 1px solid var(--line); }
+.check:last-child { border-bottom: 0; }
+.check .t { font-size: 14px; font-weight: 500; }
+.check .s { font-size: 12px; color: var(--slate); }
+.check svg { color: var(--slate); }
+
+.faq { display: grid; gap: 4px; }
+.faq details { border-radius: var(--r-xl); padding: 20px 24px; transition: background-color .2s ease; }
+.faq details[open] { background: var(--muted); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 16px; align-items: center; font-size: 18px; font-weight: 500; letter-spacing: -0.01em; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary .pm { flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--sunken); display: grid; place-items: center; transition: background-color .2s ease, color .2s ease; }
+.faq details[open] summary .pm { background: var(--ink); color: var(--white); }
+.faq summary .pm .m, .faq details[open] summary .pm .p { display: none; }
+.faq details[open] summary .pm .m { display: block; }
+.faq details p { margin-top: 12px; font-size: 15px; color: var(--slate); max-width: 640px; line-height: 1.6; }
+
+.bento { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.bento .card { background: var(--graphite); border-radius: var(--r-lg); box-shadow: inset 0 0 0 1px var(--on-dark-line); padding: 24px 24px 0; display: grid; gap: 24px; overflow: hidden; min-width: 0; }
+.bento .card .h { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+.bento .card .h p { font-size: 22px; line-height: 1.25; letter-spacing: -0.02em; max-width: 300px; }
+.bento.rules .card .h p { font-size: 18px; line-height: 1.4; max-width: 420px; }
+.sqbtn { flex: none; width: 32px; height: 32px; border-radius: 8px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.16); display: grid; place-items: center; color: var(--white); }
+.term { background: var(--graphite-2); border-radius: 10px 10px 0 0; box-shadow: inset 0 0 0 1px var(--on-dark-line); padding: 16px 18px 20px; font-family: var(--mono); font-size: 12px; line-height: 1.7; color: var(--on-dark-2); overflow-x: auto; }
+.term .c { color: var(--blue-on-dark); }
+.term .w { color: var(--white); }
+.log { background: var(--graphite-2); border-radius: 10px 10px 0 0; box-shadow: inset 0 0 0 1px var(--on-dark-line); }
+.log div { display: flex; justify-content: space-between; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--on-dark-line); font-size: 13px; color: var(--white); }
+.log div:last-child { border-bottom: 0; }
+.log .ok { color: #7FD69A; font-size: 12px; }
+.log .run { color: var(--blue-on-dark); font-size: 12px; }
+
+/* ---------- Imagery ---------- */
+.icon-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; }
+.icon-grid figure { margin: 0; background: var(--mist); border-radius: var(--r-md); padding: 20px 12px 14px; display: grid; gap: 12px; justify-items: center; font-size: 12px; color: var(--slate); text-align: center; }
+.icon-grid svg { color: var(--ink); }
+.icon-anatomy { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 32px; align-items: center; }
+.icon-anatomy svg { width: 100%; height: auto; }
+.photo-rules { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.photo { border-radius: var(--r-lg); overflow: hidden; background: var(--mist); }
+.photo .ph { aspect-ratio: 4 / 3; position: relative; }
+.photo .txt { padding: 16px 20px 20px; display: grid; gap: 6px; }
+.photo .txt b { font-size: 15px; font-weight: 600; }
+.ph-desk { background:
+   linear-gradient(180deg, transparent 62%, #C9CFCF 62%, #BFC6C6 100%),
+   radial-gradient(ellipse 40% 30% at 70% 30%, #E4ECEC 0, transparent 70%),
+   linear-gradient(160deg, #DCE5E6, #C8D3D5); }
+.ph-desk::before { content: ""; position: absolute; left: 22%; bottom: 30%; width: 46%; height: 34%; background: var(--graphite-3); border-radius: 6px 6px 2px 2px; box-shadow: 0 10px 20px -10px rgba(0,0,0,.4); }
+.ph-desk::after { content: ""; position: absolute; left: 25%; bottom: 33%; width: 40%; height: 26%; background: linear-gradient(180deg, #F2F7F7 0 18%, #FFFFFF 18% 100%); border-radius: 3px; }
+.ph-ui { background: linear-gradient(140deg, #D7E3E6, #B9CCD1); display: grid; place-items: center; }
+.ph-ui .mini { width: 62%; background: var(--white); border-radius: 10px; box-shadow: var(--shadow-float); padding: 12px; display: grid; gap: 8px; }
+.ph-ui .mini div { height: 8px; border-radius: 4px; background: var(--sunken); }
+.ph-ui .mini div:nth-child(1) { width: 40%; background: var(--ink); }
+.ph-ui .mini div:nth-child(3) { width: 70%; }
+.ph-ui .mini div.b { height: 4px; background: var(--blue); width: 68%; }
+.ph-texture { background:
+   radial-gradient(circle at 30% 40%, rgba(255,255,255,.6) 0, transparent 40%),
+   repeating-linear-gradient(115deg, #E6EDED 0 6px, #DDE6E7 6px 12px); }
+
+/* ---------- Motion ---------- */
+.motion-demo { background: var(--mist); border-radius: var(--r-lg); padding: 56px 32px; display: grid; gap: 28px; justify-items: center; text-align: center; }
+.motion-demo h3 { font-family: var(--serif); font-weight: 300; font-size: clamp(32px, 4.4vw, 56px); line-height: 1.08; letter-spacing: -0.03em; }
+.motion-demo .w { display: inline-block; }
+.motion-demo.play .w { animation: word .5s var(--ease-word) both; animation-delay: calc(var(--i) * 40ms); }
+@keyframes word { from { opacity: 0; transform: translateY(8px); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
+@media (prefers-reduced-motion: reduce) { .motion-demo.play .w { animation: none; } }
+.curve { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.curve figure { margin: 0; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); border-radius: var(--r-lg); padding: 20px; display: grid; gap: 12px; }
+.curve svg { width: 100%; height: auto; }
+
+/* ---------- Voice ---------- */
+.says { display: grid; gap: 0; border-radius: var(--r-lg); overflow: hidden; box-shadow: inset 0 0 0 1px var(--line); }
+.says .row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, .9fr); gap: 0; border-bottom: 1px solid var(--line); }
+.says .row:last-child { border-bottom: 0; }
+.says .row > div { padding: 16px 20px; font-size: 14px; line-height: 1.55; min-width: 0; }
+.says .row.h > div { background: var(--muted); font-size: 12px; color: var(--subtle); padding-block: 10px; }
+.says .yes { font-weight: 500; }
+.says .no { color: var(--slate); }
+.says .why { color: var(--subtle); font-size: 13px; }
+.quote-legal { border-radius: var(--r-lg); background: var(--cream); padding: 24px 28px; display: grid; gap: 8px; }
+.quote-legal p { font-family: var(--serif); font-size: 22px; font-weight: 300; line-height: 1.35; letter-spacing: -0.01em; }
+.glossary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; margin: 0; }
+.glossary div { padding: 14px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 16px; font-size: 14px; line-height: 1.55; }
+.glossary dt { font-weight: 600; }
+.glossary dd { margin: 0; color: var(--slate); }
+
+/* ---------- Applications ---------- */
+.apps { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; }
+.app { background: var(--mist); border-radius: var(--r-lg); padding: 24px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; align-content: start; min-width: 0; }
+.app > .caption { order: 2; }
+.span-12 { grid-column: span 12; } .span-7 { grid-column: span 7; } .span-5 { grid-column: span 5; } .span-6 { grid-column: span 6; } .span-4 { grid-column: span 4; } .span-8 { grid-column: span 8; }
+
+.mock-site { background: var(--white); border-radius: 12px; box-shadow: var(--shadow-float); overflow: hidden; }
+.mock-nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; gap: 12px; }
+.mock-nav svg.wm { width: 78px; }
+.mock-nav nav { display: flex; gap: 18px; font-size: 12px; color: var(--slate); }
+.mock-nav .btn { font-size: 12px; padding: 6px 10px; }
+.mock-hero { padding: 40px 24px 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; justify-items: center; text-align: center; }
+.mock-hero .eb { font-size: 11px; color: var(--slate); }
+.mock-hero h4 { font-family: var(--serif); font-weight: 300; font-size: clamp(28px, 4vw, 48px); line-height: 1.05; letter-spacing: -0.03em; }
+.mock-hero p { font-size: 13px; color: var(--slate); max-width: 440px; }
+.mock-hero .micro { font-size: 11px; color: var(--subtle); }
+.mock-hero .url-group { width: 100%; max-width: 360px; }
+.mock-hero .url-group input { height: 32px; font-size: 12px; }
+.mock-hero .url-group .btn { font-size: 12px; padding: 6px 10px; }
+.mock-window { margin: 28px 16px 0; background: var(--mist); border-radius: 12px 12px 0 0; padding: 16px 16px 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.mock-window .score { padding: 12px; gap: 8px; border-radius: 10px 10px 0 0; box-shadow: none; }
+.mock-window .score .val b { font-size: 24px; }
+.mock-window .score .area { font-size: 11px; }
+
+.social { aspect-ratio: 1; max-width: 100%; background: var(--mist); border-radius: 12px; box-shadow: var(--shadow-1), inset 0 0 0 1px var(--line); padding: 8%; display: grid; grid-template-rows: auto 1fr auto; gap: 16px; }
+.social .eb { font-size: clamp(10px, 1.2vw, 13px); color: var(--slate); }
+.social h4 { font-family: var(--serif); font-weight: 300; font-size: clamp(26px, 3.4vw, 44px); line-height: 1.06; letter-spacing: -0.03em; align-self: center; }
+.social .foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.social .foot svg.wm { width: 30%; max-width: 120px; }
+.social .foot span { font-size: clamp(10px, 1.1vw, 12px); background: var(--white); border-radius: 999px; padding: 5px 12px; color: var(--ink); }
+
+.biz { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.card85 { aspect-ratio: 85 / 55; border-radius: 6px; padding: 9% 8%; display: grid; box-shadow: var(--shadow-float); min-width: 0; }
+.card85.front { background: var(--graphite); place-items: center; }
+.card85.front svg.wm { width: 54%; }
+.card85.back { background: var(--white); grid-template-rows: 1fr auto; }
+.card85.back .n { font-size: clamp(12px, 1.5vw, 16px); font-weight: 600; }
+.card85.back .r { font-size: clamp(9px, 1.05vw, 11px); color: var(--slate); }
+.card85.back .c { display: flex; justify-content: space-between; align-items: flex-end; gap: 8px; font-size: clamp(8px, .95vw, 10px); color: var(--slate); line-height: 1.5; }
+.card85.back svg.wm { width: 28%; }
+
+.report { aspect-ratio: 210 / 297; max-width: 100%; background: var(--white); border-radius: 6px; box-shadow: var(--shadow-float); padding: 10% 9%; display: grid; grid-template-rows: auto 1fr auto; gap: 16px; }
+.report svg.wm { width: 34%; }
+.report .ttl { align-self: end; display: grid; gap: 8px; }
+.report .ttl small { font-size: clamp(9px, 1vw, 11px); color: var(--subtle); }
+.report .ttl h4 { font-family: var(--serif); font-weight: 300; font-size: clamp(24px, 3vw, 38px); line-height: 1.04; letter-spacing: -0.03em; }
+.report .ttl p { font-family: var(--mono); font-size: clamp(9px, 1vw, 11px); color: var(--slate); }
+.report .rows { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.report .rows div { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 7px 0; border-bottom: 1px solid var(--line); font-size: clamp(9px, 1vw, 11px); }
+.report .rows b { font-variant-numeric: tabular-nums; font-weight: 600; }
+.report .legal { font-size: clamp(7px, .8vw, 9px); color: var(--subtle); }
+
+.mail { background: var(--white); border-radius: 12px; box-shadow: var(--shadow-1), inset 0 0 0 1px var(--line); padding: 24px; display: grid; gap: 16px; font-size: 14px; line-height: 1.6; }
+.mail .sig { border-top: 1px solid var(--line); padding-top: 16px; display: grid; gap: 10px; }
+.mail .sig svg.wm { width: 84px; }
+.mail .sig p { font-size: 13px; color: var(--slate); }
+.mail .sig b { color: var(--ink); font-weight: 600; }
+
+/* ---------- Assets ---------- */
+.files td:first-child { font-family: var(--mono); font-size: 12px; white-space: nowrap; }
+
+/* ---------- Footer ---------- */
+.end { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: end; padding-top: 64px; padding-bottom: 40px; }
+.end svg.wm { width: 140px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1180px) {
+  .layout { grid-template-columns: minmax(0, 1fr); }
+  .toc { position: static; max-height: none; padding: 12px; }
+  .toc-head { display: none; }
+  .toc ol { display: flex; gap: 4px; overflow-x: auto; padding-bottom: 2px; }
+  .toc a { display: inline-flex; gap: 6px; white-space: nowrap; }
+  .sheet { padding: 64px 48px 88px; }
+  .misuse { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .radii { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .icon-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .grid-3, .grid-4, .variants, .photo-rules, .curve, .shadows, .swatches.status { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .swatches.primary, .swatches.secondary, .scores { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .anatomy, .specimen, .cover-grid { grid-template-columns: minmax(0, 1fr); }
+  .span-7, .span-5, .span-6, .span-4, .span-8 { grid-column: span 12; }
+  .micro-typo, .glossary { grid-template-columns: minmax(0, 1fr); }
+  .says .row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .says .row .why { grid-column: span 2; padding-top: 0; }
+  .says .row.h .why { display: none; }
+  .mock-window { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mock-nav nav { display: none; }
+}
+@media (max-width: 600px) {
+  body { padding-left: max(8px, env(safe-area-inset-left, 0px)); padding-right: max(8px, env(safe-area-inset-right, 0px)); padding-block: 8px 32px; }
+  .frame, .layout, main { gap: 8px; }
+  .sheet { padding: 48px 16px 64px; }
+  .grid-2, .grid-3, .grid-4, .variants, .photo-rules, .curve, .shadows, .bento, .biz, .swatches.status, .swatches.primary, .swatches.secondary { grid-template-columns: minmax(0, 1fr); }
+  .scores { grid-template-columns: minmax(0, 1fr); }
+  .axis { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .axis .track { grid-column: span 2; grid-row: 2; }
+  .scale-row { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .icon-anatomy { grid-template-columns: minmax(0, 1fr); }
+  .glossary div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .says .row { grid-template-columns: minmax(0, 1fr); }
+  .says .row .why { grid-column: auto; }
+  .says .row.h { display: none; }
+  .says .row .yes::before { content: "So schreiben wir: "; color: var(--success); font-weight: 600; }
+  .says .row .no::before { content: "Nicht so: "; color: var(--error); font-weight: 600; }
+  .radii { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .end { grid-template-columns: minmax(0, 1fr); }
+  .shadows { padding: 20px; }
+  .micro-typo div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="wm" viewBox="{{WM_VB_SYM}}">
+    <path style="fill:var(--wm-fg,currentColor);stroke:var(--wm-stroke,none);stroke-width:var(--wm-sw,0)" d="{{WM_BODY}}"/>
+    <path style="fill:var(--wm-dot,currentColor);stroke:var(--wm-stroke,none);stroke-width:var(--wm-sw,0)" d="{{WM_DOT}}"/>
+  </symbol>
+  <symbol id="mono" viewBox="0 0 512 512">
+    <rect width="512" height="512" rx="{{ICON_R}}" style="fill:var(--ic-bg)"/>
+    <path style="fill:var(--ic-fg)" d="{{ICON_W}}"/>
+    <circle cx="{{ICON_CX}}" cy="{{ICON_CY}}" r="{{ICON_DOT}}" style="fill:var(--ic-dot)"/>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-arrow-ne" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M6 12h12M12 6v12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M6 12h12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-seo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/></g></symbol>
+  <symbol id="i-geo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 4.5h13a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5H11l-4.5 3.5v-3.5h-1A1.5 1.5 0 0 1 4 15V6a1.5 1.5 0 0 1 1.5-1.5z"/><path d="M12 7.5l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z"/></g></symbol>
+  <symbol id="i-a11y" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.75" r="1.75"/><path d="M5 8.75c2.3.7 4.6 1 7 1s4.7-.3 7-1"/><path d="M12 9.75v5"/><path d="M8.75 20.5L12 14.75l3.25 5.75"/></g></symbol>
+  <symbol id="i-privacy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.25l7 2.6v5.4c0 4.3-2.9 7.9-7 9.5-4.1-1.6-7-5.2-7-9.5v-5.4z"/><path d="M9 12.25l2.1 2.1 3.9-4.1"/></g></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4 4V19a1.5 1.5 0 0 1-1.5 1.5h-9.5A1.5 1.5 0 0 1 5.5 19V5A1.5 1.5 0 0 1 7 3.5z"/><path d="M13.5 3.5V8H18M9 12.5h6M9 16h4"/></g></symbol>
+  <symbol id="i-tool" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6.5a4 4 0 0 0 5 5L12 19a2.1 2.1 0 0 1-3-3l7.5-7.5"/><path d="M14.5 6.5l2-2a4 4 0 0 1 3 7"/></g></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 7.5V12l3 2"/></g></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4 7l8 6 8-6"/></g></symbol>
+  <symbol id="i-cookie" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12.5A8 8 0 1 1 11.5 4a3 3 0 0 0 3.5 3.5 3 3 0 0 0 5 5z"/><circle cx="9" cy="10" r=".6" fill="currentColor"/><circle cx="14" cy="15" r=".6" fill="currentColor"/><circle cx="9.5" cy="15.5" r=".6" fill="currentColor"/></g></symbol>
+  <symbol id="i-speed" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 17a8 8 0 1 1 15 0"/><path d="M12 13l3.5-4"/><circle cx="12" cy="13.5" r="1"/></g></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></g></symbol>
+</svg>
+
+<div class="frame">
+
+<!-- ================= COVER ================= -->
+<header class="sheet cover" id="top">
+  <div class="cover-top">
+    <span class="eyebrow">Markenhandbuch</span>
+    <div class="meta"><span class="pill">Version 1.0</span><span class="pill">Stand 14.10.2026</span></div>
+  </div>
+  <div class="cover-mark">
+    <svg class="wm wm-std" viewBox="{{WM_VB}}" role="img" aria-label="Webfix"><use href="#wm"/></svg>
+  </div>
+  <div class="cover-grid">
+    <p class="lead">Dieses Handbuch beschreibt, wie Webfix aussieht, klingt und sich bewegt. Es richtet sich an alle, die für Webfix gestalten, schreiben oder entwickeln, vom Website-Code bis zum PDF-Report.</p>
+    <div class="stat-row"><span><b>12</b> Kapitel</span><i>·</i><span><b>1</b> Akzentfarbe</span><i>·</i><span><b>2</b> Schriftfamilien</span><i>·</i><span><b>0</b> Alarm-Optik</span></div>
+  </div>
+</header>
+
+<div class="layout">
+<nav class="toc" aria-label="Kapitel">
+  <div class="toc-head">
+    <svg class="wm wm-std" viewBox="{{WM_VB}}" role="img" aria-label="Webfix"><use href="#wm"/></svg>
+    <p>Markenhandbuch 1.0</p>
+  </div>
+  <ol>
+    <li><a href="#marke"><span>01</span>Marke</a></li>
+    <li><a href="#logo"><span>02</span>Logo</a></li>
+    <li><a href="#farbe"><span>03</span>Farbe</a></li>
+    <li><a href="#typografie"><span>04</span>Typografie</a></li>
+    <li><a href="#layout"><span>05</span>Layout &amp; Raum</a></li>
+    <li><a href="#form"><span>06</span>Form &amp; Tiefe</a></li>
+    <li><a href="#komponenten"><span>07</span>Komponenten</a></li>
+    <li><a href="#bildsprache"><span>08</span>Bildsprache</a></li>
+    <li><a href="#bewegung"><span>09</span>Bewegung</a></li>
+    <li><a href="#sprache"><span>10</span>Sprache</a></li>
+    <li><a href="#vorbild"><span>11</span>Vorbildfunktion</a></li>
+    <li><a href="#anwendungen"><span>12</span>Anwendungen</a></li>
+    <li><a href="#dateien"><span>→</span>Dateien</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- ================= 01 MARKE ================= -->
+<section class="sheet" id="marke" aria-labelledby="h-marke">
+  <div class="chapter-head">
+    <span class="eyebrow"><span class="n">01</span>Marke</span>
+    <h2 class="display-lg" id="h-marke">Klarheit über die eigene Website, ohne Fachchinesisch.</h2>
+    <p class="lead">Webfix prüft Websites auf SEO, KI-Sichtbarkeit, Barrierefreiheit und Datenschutz und behebt die gefundenen Probleme auf Wunsch. Die Marke muss deshalb zwei Dinge gleichzeitig ausstrahlen: technische Präzision und menschliche Ruhe.</p>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><span class="caption">Kernversprechen</span></div>
+    <p class="promise">Ein Scan. Vier Scores. <mark>Klare Antworten</mark> – und wenn Sie wollen, beheben wir es.</p>
+  </div>
+
+  <div class="block">
+    <div class="grid-3">
+      <div class="panel white"><h4>Mission</h4><p class="small">Jede Website-Betreiberin und jeder Website-Betreiber soll in wenigen Minuten verstehen, wo die eigene Seite Kunden verliert und wo rechtliche Risiken liegen.</p></div>
+      <div class="panel white"><h4>Haltung</h4><p class="small">Wir erklären, statt zu drohen. Risiken benennen wir sachlich, Lösungen konkret. Wer selbst umsetzen will, bekommt alles dafür. Wer nicht will, bekommt uns.</p></div>
+      <div class="panel white"><h4>Positionierung</h4><p class="small">Zwischen kostenlosen Einzeltools, die nur einen Bereich prüfen, und Agentur-Audits, die Wochen dauern: alle vier Bereiche in einem Scan, verständlich erklärt.</p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Vier Werte</h3><p class="small">Jede Gestaltungs- und Textentscheidung lässt sich auf einen dieser Werte zurückführen. Wenn zwei Werte kollidieren, gewinnt der weiter links stehende.</p></div>
+    <div class="grid-4">
+      <div class="value"><div class="k"><i class="dot"></i><h4>Klar</h4></div><dl><div><dt>Heißt</dt><dd>Ein Gedanke pro Satz. Zahlen statt Adjektive. Fachbegriffe beim ersten Auftreten erklärt.</dd></div><div><dt>Heißt nicht</dt><dd>Vereinfachen, bis es falsch wird.</dd></div></dl></div>
+      <div class="value"><div class="k"><i class="dot"></i><h4>Ruhig</h4></div><dl><div><dt>Heißt</dt><dd>Viel Weißraum, gedämpfte Farben, leise Bewegung. Probleme werden eingeordnet, nicht dramatisiert.</dd></div><div><dt>Heißt nicht</dt><dd>Langweilig oder unverbindlich.</dd></div></dl></div>
+      <div class="value"><div class="k"><i class="dot"></i><h4>Ehrlich</h4></div><dl><div><dt>Heißt</dt><dd>Keine Garantien, die niemand geben kann. Keine erfundenen Zahlen oder Kundenstimmen. Preise offen.</dd></div><div><dt>Heißt nicht</dt><dd>Jede Aussage mit Fußnoten absichern.</dd></div></dl></div>
+      <div class="value"><div class="k"><i class="dot"></i><h4>Hilfsbereit</h4></div><dl><div><dt>Heißt</dt><dd>Jeder Fund kommt mit einem nächsten Schritt. Der kostenlose Teil ist wirklich nützlich.</dd></div><div><dt>Heißt nicht</dt><dd>Aufdringlich verkaufen.</dd></div></dl></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Persönlichkeit</h3><p class="small">Wo Webfix zwischen zwei Polen steht. Der blaue Punkt ist die Position, nicht das Ideal am Rand.</p></div>
+    <div class="axes">
+      <div class="axis"><span class="l">Verspielt</span><div class="track"><b style="left:78%"></b></div><span class="r on">Seriös</span></div>
+      <div class="axis"><span class="l">Laut</span><div class="track"><b style="left:76%"></b></div><span class="r on">Leise</span></div>
+      <div class="axis"><span class="l">Technisch</span><div class="track"><b style="left:72%"></b></div><span class="r on">Verständlich</span></div>
+      <div class="axis"><span class="l">Exklusiv</span><div class="track"><b style="left:64%"></b></div><span class="r on">Zugänglich</span></div>
+      <div class="axis"><span class="l">Zurückhaltend</span><div class="track"><b style="left:58%"></b></div><span class="r on">Bestimmt</span></div>
+      <div class="axis"><span class="l on">Präzise</span><div class="track"><b style="left:26%"></b></div><span class="r">Ungefähr</span></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Für wen wir gestalten</h3><p class="small">Drei Zielgruppen mit einem gemeinsamen Nenner: Sie wissen nicht, was mit ihrer Website nicht stimmt, und wollen weder Fachchinesisch noch eine teure Agentur, um es herauszufinden.</p></div>
+    <div class="grid-3">
+      <div class="panel audience"><p class="q">„Die Seite sieht gut aus, aber es kommen kaum Anfragen.“</p><p class="who">Unternehmen mit schwacher Conversion</p></div>
+      <div class="panel audience"><p class="q">„Ich habe keine Ahnung, ob meine Seite überhaupt rechtssicher ist.“</p><p class="who">Unternehmen mit Abmahnangst</p></div>
+      <div class="panel audience"><p class="q">„Ich habe die Website mit KI gebaut. Ob da DSGVO-mäßig alles passt, weiß ich nicht.“</p><p class="who">Selbstbauer mit KI-Tools und Baukästen</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 LOGO ================= -->
+<section class="sheet" id="logo" aria-labelledby="h-logo">
+  <div class="chapter-head">
+    <span class="eyebrow"><span class="n">02</span>Logo</span>
+    <h2 class="display-lg" id="h-logo">Eine Wortmarke. Ein Punkt, der den Unterschied macht.</h2>
+    <p class="lead">Das Logo ist der Name, kräftig und schlicht gesetzt. Einziges Merkmal ist der blaue i-Punkt, der <b>Fix-Punkt</b>: die Stelle, an der etwas geprüft und in Ordnung gebracht wurde.</p>
+  </div>
+
+  <div class="block">
+    <div class="logo-stage"><svg class="wm wm-std" viewBox="{{WM_VB}}" role="img" aria-label="Webfix Wortmarke"><use href="#wm"/></svg></div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Konstruktion</h3><p class="small">Die Wortmarke ist eine Reinzeichnung als Vektorpfade. Sie wird nie live aus der Schrift gesetzt, sondern immer als Datei eingebunden.</p></div>
+    <div class="anatomy">
+      <div class="anatomy-figure">{{CLEAR_SVG}}<p class="caption">Schutzzone: Rundum mindestens die x-Höhe der Wortmarke (Höhe des „e“) freihalten. Innerhalb dieser Fläche stehen keine Texte, Bilder oder Kanten.</p></div>
+      <div class="panel">
+        <dl class="spec">
+          <dt>Schrift</dt><dd>Inter Tight</dd>
+          <dt>Schnitt</dt><dd>ExtraBold (800)</dd>
+          <dt>Laufweite</dt><dd>−3 % (−30 Einheiten)</dd>
+          <dt>Ausgleich</dt><dd>f → i +4,5 %, damit der f-Bogen den Punkt nicht berührt</dd>
+          <dt>Schreibweise</dt><dd>Webfix, großes W</dd>
+          <dt>Fix-Punkt</dt><dd>Signalblau #2F68DB, auf Dunkel #659FFD</dd>
+          <dt>Proportion</dt><dd>ca. {{WM_RATIO}} : 1 (Breite : Höhe)</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Varianten</h3><p class="small">Standard ist die Tinten-Wortmarke mit blauem Punkt auf Weiß oder Nebel. Einfarbige Varianten nur, wenn Farbe technisch nicht möglich ist (Stempel, Gravur, Fax, Einfarbdruck) oder auf Signalblau.</p></div>
+    <div class="variants">
+      <figure class="variant" style="margin:0"><div class="stage" style="background:var(--white)"><svg class="wm wm-std" viewBox="{{WM_VB}}" aria-hidden="true"><use href="#wm"/></svg></div><figcaption class="info"><b>Standard</b><span class="caption">webfix-wordmark.svg · auf Weiß, Nebel, Creme</span></figcaption></figure>
+      <figure class="variant" style="margin:0"><div class="stage" style="background:var(--graphite)"><svg class="wm wm-dark" viewBox="{{WM_VB}}" aria-hidden="true"><use href="#wm"/></svg></div><figcaption class="info"><b>Auf Dunkel</b><span class="caption">webfix-wordmark-on-dark.svg · auf Graphit und Tinte</span></figcaption></figure>
+      <figure class="variant" style="margin:0"><div class="stage" style="background:var(--blue)"><svg class="wm wm-mono-white" viewBox="{{WM_VB}}" aria-hidden="true"><use href="#wm"/></svg></div><figcaption class="info"><b>Auf Signalblau</b><span class="caption">webfix-wordmark-mono-white.svg · nur auf Blau</span></figcaption></figure>
+      <figure class="variant" style="margin:0"><div class="stage" style="background:var(--mist)"><svg class="wm wm-mono-ink" viewBox="{{WM_VB}}" aria-hidden="true"><use href="#wm"/></svg></div><figcaption class="info"><b>Einfarbig Tinte</b><span class="caption">webfix-wordmark-mono-ink.svg · Einfarbdruck</span></figcaption></figure>
+      <figure class="variant" style="margin:0"><div class="stage" style="background:var(--mist)"><svg class="icon" viewBox="0 0 512 512" style="--ic-bg:var(--ink);--ic-fg:var(--white);--ic-dot:var(--blue-on-dark)" aria-hidden="true"><use href="#mono"/></svg></div><figcaption class="info"><b>Icon</b><span class="caption">webfix-icon.svg · App-Icon, Favicon, Social-Avatar</span></figcaption></figure>
+      <figure class="variant" style="margin:0"><div class="stage" style="background:var(--graphite)"><svg class="icon" viewBox="0 0 512 512" style="--ic-bg:var(--white);--ic-fg:var(--ink);--ic-dot:var(--blue)" aria-hidden="true"><use href="#mono"/></svg></div><figcaption class="info"><b>Icon hell</b><span class="caption">webfix-icon-light.svg · auf dunklen Flächen</span></figcaption></figure>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Das Icon</h3><p class="small">Wo die Wortmarke zu klein würde (unter 80 px Breite), übernimmt das Icon: das „W“ aus der Wortmarke und der Fix-Punkt in einem gerundeten Quadrat. Der Eckradius beträgt 22,6 % der Kantenlänge. Plattformen, die selbst maskieren (iOS, Android), bekommen das Quadrat ohne Rundung.</p></div>
+    <div class="grid-2">
+      <div class="panel">
+        <dl class="spec">
+          <dt>Einsatz</dt><dd>Favicon, App-Icon, Social-Avatar, Browser-Tab, Lesezeichen</dd>
+          <dt>Größen</dt><dd>16, 32, 48, 180, 192, 512 px</dd>
+          <dt>Nicht</dt><dd>Als Ersatz für die Wortmarke im Website-Header oder auf dem Report</dd>
+        </dl>
+      </div>
+      <div class="panel" style="display:flex;gap:20px;align-items:flex-end;flex-wrap:wrap">
+        <svg viewBox="0 0 512 512" width="96" height="96" style="--ic-bg:var(--ink);--ic-fg:var(--white);--ic-dot:var(--blue-on-dark)" role="img" aria-label="Icon 96 px"><use href="#mono"/></svg>
+        <svg viewBox="0 0 512 512" width="48" height="48" style="--ic-bg:var(--ink);--ic-fg:var(--white);--ic-dot:var(--blue-on-dark)" role="img" aria-label="Icon 48 px"><use href="#mono"/></svg>
+        <svg viewBox="0 0 512 512" width="32" height="32" style="--ic-bg:var(--ink);--ic-fg:var(--white);--ic-dot:var(--blue-on-dark)" role="img" aria-label="Icon 32 px"><use href="#mono"/></svg>
+        <svg viewBox="0 0 512 512" width="16" height="16" style="--ic-bg:var(--ink);--ic-fg:var(--white);--ic-dot:var(--blue-on-dark)" role="img" aria-label="Icon 16 px"><use href="#mono"/></svg>
+        <span class="caption">96 · 48 · 32 · 16 px</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Mindestgrößen</h3><p class="small">Darunter wird der Fix-Punkt zu klein, um als Farbe wahrgenommen zu werden.</p></div>
+    <div class="sizes">
+      <figure><svg class="wm wm-std" viewBox="{{WM_VB}}" style="width:200px" aria-hidden="true"><use href="#wm"/></svg><figcaption class="caption">Empfohlen ab 120 px</figcaption></figure>
+      <figure><svg class="wm wm-std" viewBox="{{WM_VB}}" style="width:120px" aria-hidden="true"><use href="#wm"/></svg><figcaption class="caption">Header Website: 96–120 px</figcaption></figure>
+      <figure><svg class="wm wm-std" viewBox="{{WM_VB}}" style="width:80px" aria-hidden="true"><use href="#wm"/></svg><figcaption class="caption">Minimum digital: 80 px</figcaption></figure>
+      <figure><div class="panel" style="padding:14px 18px"><p class="small"><b>Druck:</b> mindestens 20 mm breit<br><b>Icon:</b> mindestens 16 px / 5 mm</p></div></figure>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Falsche Anwendung</h3><p class="small">Die Wortmarke wird nie verändert, nachgebaut oder dekoriert.</p></div>
+    <div class="misuse">
+      <figure><div class="stage"><svg class="wm wm-std" viewBox="{{WM_VB}}" style="transform:scaleX(1.35)" aria-hidden="true"><use href="#wm"/></svg></div><figcaption><svg width="16" height="16"><use href="#i-x"/></svg>Nicht verzerren oder stauchen.</figcaption></figure>
+      <figure><div class="stage"><svg class="wm wm-std" viewBox="{{WM_VB}}" style="transform:rotate(-10deg)" aria-hidden="true"><use href="#wm"/></svg></div><figcaption><svg width="16" height="16"><use href="#i-x"/></svg>Nicht drehen oder schräg stellen.</figcaption></figure>
+      <figure><div class="stage"><svg class="wm wm-std" viewBox="{{WM_VB}}" style="--wm-dot:var(--error)" aria-hidden="true"><use href="#wm"/></svg></div><figcaption><svg width="16" height="16"><use href="#i-x"/></svg>Den Punkt nicht umfärben, schon gar nicht in Warnfarben.</figcaption></figure>
+      <figure><div class="stage"><svg class="wm wm-std" viewBox="{{WM_VB}}" style="filter:drop-shadow(0 6px 6px rgba(0,0,0,.35)) drop-shadow(0 0 10px rgba(47,104,219,.7))" aria-hidden="true"><use href="#wm"/></svg></div><figcaption><svg width="16" height="16"><use href="#i-x"/></svg>Keine Schatten, Glows oder Verläufe.</figcaption></figure>
+      <figure><div class="stage"><svg class="wm" viewBox="{{WM_VB}}" style="--wm-fg:transparent;--wm-dot:transparent;--wm-stroke:var(--ink);--wm-sw:40" aria-hidden="true"><use href="#wm"/></svg></div><figcaption><svg width="16" height="16"><use href="#i-x"/></svg>Nicht als Kontur verwenden.</figcaption></figure>
+      <figure><div class="stage busy"><svg class="wm wm-std" viewBox="{{WM_VB}}" aria-hidden="true"><use href="#wm"/></svg></div><figcaption><svg width="16" height="16"><use href="#i-x"/></svg>Nicht auf unruhige Bilder oder Verläufe setzen.</figcaption></figure>
+      <figure><div class="stage"><span class="fake" aria-hidden="true">Webfix</span></div><figcaption><svg width="16" height="16"><use href="#i-x"/></svg>Nicht in einer anderen Schrift nachsetzen.</figcaption></figure>
+      <figure><div class="stage"><svg class="wm wm-std" viewBox="{{WM_VB}}" style="--wm-fg:var(--blue);--wm-dot:var(--ink)" aria-hidden="true"><use href="#wm"/></svg></div><figcaption><svg width="16" height="16"><use href="#i-x"/></svg>Farben nicht vertauschen oder neu kombinieren.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 FARBE ================= -->
+<section class="sheet" id="farbe" aria-labelledby="h-farbe">
+  <div class="chapter-head">
+    <span class="eyebrow"><span class="n">03</span>Farbe</span>
+    <h2 class="display-lg" id="h-farbe">Fast monochrom. Blau heißt: hier klicken.</h2>
+    <p class="lead">Die Palette besteht aus kühler Tinte, kühlem Nebel, Weiß und einem einzigen Signalblau. Wärme kommt nur aus einem sehr hellen Creme-Ton, der einmal pro Seite auftauchen darf. Statusfarben gibt es nur in Prüfergebnissen.</p>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Primärfarben</h3><p class="small">Klick auf den Hex-Wert kopiert ihn.</p></div>
+    <div class="swatches primary">{{PALETTE_PRIMARY}}</div>
+    <p class="caption">* CMYK-Werte sind rechnerische Richtwerte. Vor jedem Druck mit der Druckerei auf dem echten Papier proofen.</p>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Sekundärfarben</h3><p class="small">Für Text-Hierarchie, Linien, dunkle Bänder und die eine warme Fläche.</p></div>
+    <div class="swatches secondary">{{PALETTE_SECONDARY}}</div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Statusfarben</h3><p class="small">Nur für Scores, Prüfzeilen und Formular-Feedback. Immer als gedämpftes Badge (Text auf heller Fläche), nie als großflächiger Hintergrund, nie in Headlines. Rot ist kein Marketing-Werkzeug.</p></div>
+    <div class="swatches status">{{PALETTE_STATUS}}</div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Mengenverhältnis</h3><p class="small">So viel Fläche nimmt jede Farbe auf einer typischen Seite ungefähr ein. Blau bleibt unter 2 %.</p></div>
+    <div class="ratio" role="img" aria-label="Nebel 44 Prozent, Weiß 32 Prozent, Tinte 14 Prozent, Graphit 6 Prozent, Creme 2,5 Prozent, Signalblau 1,5 Prozent">
+      <div style="flex:44;background:var(--mist);color:var(--slate)">Nebel 44 %</div>
+      <div style="flex:32;background:var(--white);color:var(--slate)">Weiß 32 %</div>
+      <div style="flex:14;background:var(--ink);color:var(--white)">Tinte 14 %</div>
+      <div style="flex:6;background:var(--graphite);color:var(--on-dark-2)">6 %</div>
+      <div style="flex:2.5;background:var(--cream)"></div>
+      <div style="flex:1.5;background:var(--blue)"></div>
+    </div>
+    <div class="legend"><span><i style="background:var(--graphite)"></i>Graphit 6 %</span><span><i style="background:var(--cream)"></i>Creme 2,5 %</span><span><i style="background:var(--blue)"></i>Signalblau 1,5 %</span></div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Kontrast-Paare</h3><p class="small">Webfix prüft andere auf Barrierefreiheit, also bestehen alle Text-Paare der Marke WCAG 2.2 AA (4,5 : 1 für Text, 3 : 1 für große Schrift und Bedienelemente). Werte berechnet nach WCAG-Formel.</p></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Beispiel</th><th>Vordergrund</th><th>Hintergrund</th><th>Kontrast</th><th>Bewertung</th><th>Einsatz</th></tr></thead>
+      <tbody>{{CONTRAST_ROWS}}</tbody>
+    </table></div>
+  </div>
+
+  <div class="block">
+    <div class="grid-2">
+      <div class="panel"><h4>So setzen wir Farbe ein</h4><ul class="list yes">
+        <li><svg width="18" height="18"><use href="#i-check"/></svg>Signalblau nur für die wichtigste Aktion, aktive Zustände und Links.</li>
+        <li><svg width="18" height="18"><use href="#i-check"/></svg>Höchstens eine blaue Fläche pro Bildschirmhöhe.</li>
+        <li><svg width="18" height="18"><use href="#i-check"/></svg>Text immer in Tinte oder Schiefer, nie in reinem Schwarz.</li>
+        <li><svg width="18" height="18"><use href="#i-check"/></svg>Ein dunkles Band und ein Creme-Band pro Seite, nicht mehr.</li>
+      </ul></div>
+      <div class="panel"><h4>Das machen wir nicht</h4><ul class="list no">
+        <li><svg width="18" height="18"><use href="#i-x"/></svg>Verläufe als Hintergrund, Neon, Glow, Glas-Effekte.</li>
+        <li><svg width="18" height="18"><use href="#i-x"/></svg>Rote oder gelbe Flächen, Warnstreifen, „Alarm“-Optik.</li>
+        <li><svg width="18" height="18"><use href="#i-x"/></svg>Das Referenz-Blau #397DFF mit weißer Schrift (nur 3,78 : 1).</li>
+        <li><svg width="18" height="18"><use href="#i-x"/></svg>Neue Akzentfarben für einzelne Kampagnen.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04 TYPOGRAFIE ================= -->
+<section class="sheet" id="typografie" aria-labelledby="h-typo">
+  <div class="chapter-head">
+    <span class="eyebrow"><span class="n">04</span>Typografie</span>
+    <h2 class="display-lg" id="h-typo">Große leise Serif, kleine präzise Grotesk.</h2>
+    <p class="lead">Die Hierarchie entsteht über Größe und Schriftart, nicht über Fettung. Eine Light-Serif mit bis zu 72 px steht über einer Grotesk mit 14 bis 18 px. Dazwischen gibt es fast nichts. Daraus kommt die Ruhe.</p>
+  </div>
+
+  <div class="block">
+    <div class="specimen">
+      <div class="big"><span class="caption">Display &amp; Headlines</span><p class="glyphs f-serif">Aa Ää</p><p class="alpha f-serif" style="font-size:22px">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyzäöüß<br>0123456789 „“ – € %</p></div>
+      <div class="panel facts"><p class="title f-serif" style="font-size:32px;font-weight:300">Newsreader</p>
+        <dl class="spec"><dt>Rolle</dt><dd>Display, Headlines, Zitate, Claims</dd><dt>Schnitt</dt><dd>Light 300, nie fett</dd><dt>Laufweite</dt><dd>−2 bis −3 %</dd><dt>Zeilenhöhe</dt><dd>1,02–1,2</dd><dt>Lizenz</dt><dd>SIL Open Font License</dd></dl>
+        <p class="caption">Freie Entsprechung zu Tiempos Headline aus der Design-Referenz.</p></div>
+    </div>
+  </div>
+  <div class="block" style="margin-top:16px">
+    <div class="specimen">
+      <div class="big"><span class="caption">Text, Interface, Zahlen</span><p class="glyphs f-sans" style="font-weight:400">Aa Ää</p><p class="alpha f-sans">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyzäöüß<br>0123456789 „“ – € %</p></div>
+      <div class="panel facts"><p class="title f-sans" style="font-size:28px;font-weight:500;letter-spacing:-.02em">Inter Tight</p>
+        <dl class="spec"><dt>Rolle</dt><dd>Fließtext, UI, Labels, Scores, Wortmarke</dd><dt>Schnitte</dt><dd>400 Text · 500 Titel · 600 Buttons · 800 nur Logo</dd><dt>Ziffern</dt><dd>Tabellenziffern in Scores und Tabellen</dd><dt>Lizenz</dt><dd>SIL Open Font License</dd></dl>
+        <div class="weights"><span style="font-weight:400">Regular</span><span style="font-weight:500">Medium</span><span style="font-weight:600">Semibold</span><span style="font-weight:800">ExtraBold · Logo</span></div></div>
+    </div>
+  </div>
+  <div class="block" style="margin-top:16px">
+    <div class="specimen">
+      <div class="big"><span class="caption">Code &amp; technische Werte</span><p class="glyphs f-mono" style="font-size:clamp(48px,7vw,96px)">{ } 0O</p><p class="alpha f-mono" style="font-size:14px">robots.txt · llms.txt · &lt;meta name="description"&gt;<br>Content-Security-Policy · 200 OK · 1,8 s</p></div>
+      <div class="panel facts"><p class="title f-mono" style="font-size:22px">JetBrains Mono</p>
+        <dl class="spec"><dt>Rolle</dt><dd>Code-Ausschnitte, Dateinamen, URLs im Report, Hex-Werte</dd><dt>Schnitt</dt><dd>Regular 400</dd><dt>Größe</dt><dd>12–14 px</dd><dt>Lizenz</dt><dd>SIL Open Font License</dd></dl></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Schriftgrade</h3><p class="small">Alle Grade sind Design-Tokens in <code>DESIGN.md</code>. Auf Mobilgeräten skaliert Display-XL auf 44 px, Display-LG auf 36 px.</p></div>
+    <div class="scale">
+      <div class="scale-row"><div class="meta"><b>display-xl</b>Newsreader 300 · 72/76 · −3 %</div><p class="ex f-serif" style="font-size:clamp(40px,5.6vw,72px);line-height:1.06;letter-spacing:-.03em">Wie gut ist Ihre Website wirklich?</p></div>
+      <div class="scale-row"><div class="meta"><b>display-lg</b>Newsreader 300 · 48/56 · −2 %</div><p class="ex f-serif" style="font-size:clamp(32px,3.8vw,48px);line-height:1.16;letter-spacing:-.02em">In drei Schritten zur besseren Website</p></div>
+      <div class="scale-row"><div class="meta"><b>headline-lg</b>Newsreader 300 · 36/43 · −2 %</div><p class="ex f-serif" style="font-size:36px;line-height:1.2;letter-spacing:-.02em">Ein Scan. Vier Scores.</p></div>
+      <div class="scale-row"><div class="meta"><b>headline-md</b>Newsreader 300 · 28/34 · −2 %</div><p class="ex f-serif" style="font-size:28px;line-height:1.2;letter-spacing:-.02em">Häufige Fragen</p></div>
+      <div class="scale-row"><div class="meta"><b>title-lg</b>Inter Tight 400 · 24/29 · −2 %</div><p class="ex two-tone" style="font-size:24px;line-height:1.2;letter-spacing:-.02em">Barrierefreiheit <em>prüft Kontraste, Alt-Texte und Tastaturbedienung</em></p></div>
+      <div class="scale-row"><div class="meta"><b>title-md</b>Inter Tight 500 · 20/25 · −1 %</div><p class="ex" style="font-size:20px;font-weight:500;letter-spacing:-.01em">Abmahnrisiko im Quellcode</p></div>
+      <div class="scale-row"><div class="meta"><b>body-lg</b>Inter Tight 400 · 18/29</div><p class="ex" style="font-size:18px;line-height:1.6;color:var(--slate);max-width:620px">Webfix prüft Ihre Website in wenigen Minuten auf SEO, Sichtbarkeit in KI-Suchen, Barrierefreiheit und Datenschutz.</p></div>
+      <div class="scale-row"><div class="meta"><b>body-md</b>Inter Tight 400 · 16/24</div><p class="ex" style="font-size:16px;max-width:620px">Mit dem ausführlichen PDF-Report setzen Sie alles selbst um. Oder Sie überlassen den Fix unserem Team.</p></div>
+      <div class="scale-row"><div class="meta"><b>body-sm</b>Inter Tight 400 · 14/22</div><p class="ex" style="font-size:14px;line-height:1.6;max-width:620px">Fehlende Meta-Daten, langsame Ladezeiten, keine strukturierten Daten.</p></div>
+      <div class="scale-row"><div class="meta"><b>label-md</b>Inter Tight 600 · 14/20</div><p class="ex"><span class="btn btn-primary">Kostenlos prüfen</span></p></div>
+      <div class="scale-row"><div class="meta"><b>eyebrow</b>Inter Tight 500 · 13/18</div><p class="ex"><span class="eyebrow">So funktioniert's</span></p></div>
+      <div class="scale-row"><div class="meta"><b>label-sm</b>Inter Tight 400 · 12/17</div><p class="ex caption">Kostenlos · Ohne Anmeldung · Ergebnis direkt im Browser</p></div>
+      <div class="scale-row"><div class="meta"><b>score</b>Inter Tight 500 · 40/40 · −3 % · tnum</div><p class="ex" style="font-size:40px;font-weight:500;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1">86<span style="font-size:14px;color:var(--subtle);letter-spacing:0;margin-left:4px">/100</span></p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="grid-2">
+      <div class="panel"><h4>Satzregeln</h4><ul class="list yes">
+        <li><svg width="18" height="18"><use href="#i-check"/></svg>Linksbündiger Flattersatz. Zentriert nur Hero, kurze Leads und Pausen-Headlines.</li>
+        <li><svg width="18" height="18"><use href="#i-check"/></svg>Zeilenlänge für Fließtext höchstens 660 px (ca. 65 Zeichen).</li>
+        <li><svg width="18" height="18"><use href="#i-check"/></svg>Headlines höchstens zwei, ausnahmsweise drei Zeilen, ausgeglichen umbrochen.</li>
+        <li><svg width="18" height="18"><use href="#i-check"/></svg>Zweitoniger Titel: Kern in Tinte, Fortsetzung in 50 % Deckkraft.</li>
+      </ul></div>
+      <div class="panel"><h4>Vermeiden</h4><ul class="list no">
+        <li><svg width="18" height="18"><use href="#i-x"/></svg>Fette oder kursive Serif-Headlines.</li>
+        <li><svg width="18" height="18"><use href="#i-x"/></svg>Versalien mit Sperrung als Eyebrow oder Label.</li>
+        <li><svg width="18" height="18"><use href="#i-x"/></svg>Blocksatz und Silbentrennung in Überschriften.</li>
+        <li><svg width="18" height="18"><use href="#i-x"/></svg>Schriften von Google Fonts oder anderen CDNs laden.</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Deutsche Mikrotypografie</h3><p class="small">Kleine Zeichen, große Wirkung auf die Glaubwürdigkeit.</p></div>
+    <div class="micro-typo">
+      <div><span class="ok">„Anführungszeichen“</span><span class="bad">"Anführungszeichen"</span></div>
+      <div><span class="ok">29,99 €</span><span class="bad">€29.99 / 29,99€</span></div>
+      <div><span class="ok">SEO – und mehr</span><span class="bad">SEO - und mehr</span></div>
+      <div><span class="ok">92 %</span><span class="bad">92%</span></div>
+      <div><span class="ok">0–100 Punkte</span><span class="bad">0 - 100 Punkte</span></div>
+      <div><span class="ok">3.420 Prüfungen</span><span class="bad">3,420 Prüfungen</span></div>
+      <div><span class="ok">14.10.2026</span><span class="bad">10/14/2026</span></div>
+      <div><span class="ok">z. B., d. h.</span><span class="bad">z.B., d.h.</span></div>
+      <div><span class="ok">E-Mail</span><span class="bad">Email, eMail</span></div>
+      <div><span class="ok">KI-Suche</span><span class="bad">AI-Suche</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 LAYOUT ================= -->
+<section class="sheet" id="layout" aria-labelledby="h-layout">
+  <div class="chapter-head">
+    <span class="eyebrow"><span class="n">05</span>Layout &amp; Raum</span>
+    <h2 class="display-lg" id="h-layout">Die Seite ist ein Objekt auf einem Tisch.</h2>
+    <p class="lead">Jede Hauptsektion ist ein eigenes, gerundetes Blatt, 12 px vom Rand eingerückt, auf einem kühlen Nebelgrund. Zwischen den Blättern bleibt ein Streifen Nebel sichtbar. So wirkt die Seite gebaut und nicht endlos.</p>
+  </div>
+
+  <div class="block">
+    <div class="grid-2">
+      <div>
+        <div class="block-head" style="margin-bottom:20px"><h3>Seitenmodell</h3><p class="small">Hell und dunkel wechseln sich ab, zentriert und linksbündig auch.</p></div>
+        <div class="page-model" aria-label="Schematische Abfolge der Sektionen">
+          <div class="w" style="height:84px"><b>Hero</b><span>weiß · zentriert</span></div>
+          <div class="m" style="height:52px"><b>Pause</b><span>Nebel · zentriert</span></div>
+          <div class="w" style="height:72px"><b>Problem / Ablauf</b><span>weiß · linksbündig</span></div>
+          <div class="g" style="height:72px"><b>Technik / Report</b><span>Graphit · einmal</span></div>
+          <div class="c" style="height:60px"><b>Preise</b><span>Creme · einmal</span></div>
+          <div class="w" style="height:56px"><b>FAQ</b><span>weiß</span></div>
+          <div class="g" style="height:48px"><b>Footer</b><span>Graphit</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="block-head" style="margin-bottom:20px"><h3>Abstandsskala</h3><p class="small">Basis 4 px. Innerhalb von Komponenten 4–16, zwischen Blöcken 24–48, zwischen Sektionen 80–120.</p></div>
+        <div class="space-scale">
+          <div><b>2xs</b><code>4</code><i style="width:4px"></i></div>
+          <div><b>xs</b><code>8</code><i style="width:8px"></i></div>
+          <div><b>sm</b><code>12</code><i style="width:12px"></i></div>
+          <div><b>md</b><code>16</code><i style="width:16px"></i></div>
+          <div><b>lg</b><code>24</code><i style="width:24px"></i></div>
+          <div><b>xl</b><code>32</code><i style="width:32px"></i></div>
+          <div><b>2xl</b><code>48</code><i style="width:48px"></i></div>
+          <div><b>3xl</b><code>64</code><i style="width:64px"></i></div>
+          <div><b>4xl</b><code>80</code><i style="width:80px"></i></div>
+          <div><b>5xl</b><code>120</code><i style="width:120px"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Raster</h3><p class="small">12 Spalten, 24 px Spaltenabstand, maximal 1296 px Inhaltsbreite. Textsektionen 1024 px, Fließtext 660 px.</p></div>
+    <div class="cols" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Breite</th><th>Spalten</th><th>Seitenrand im Blatt</th><th>Blatt-Einzug</th><th>Sektion oben / unten</th></tr></thead>
+      <tbody>
+        <tr><td>ab 1280 px</td><td class="num">12</td><td class="num">72 px</td><td class="num">12 px</td><td class="num">80 / 120 px</td></tr>
+        <tr><td>768–1279 px</td><td class="num">8</td><td class="num">48 px</td><td class="num">12 px</td><td class="num">64 / 88 px</td></tr>
+        <tr><td>bis 767 px</td><td class="num">4</td><td class="num">16 px</td><td class="num">8 px</td><td class="num">48 / 64 px</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- ================= 06 FORM ================= -->
+<section class="sheet" id="form" aria-labelledby="h-form">
+  <div class="chapter-head">
+    <span class="eyebrow"><span class="n">06</span>Form &amp; Tiefe</span>
+    <h2 class="display-lg" id="h-form">Je größer die Fläche, desto weicher die Ecke.</h2>
+    <p class="lead">Tiefe entsteht zuerst über Tonwerte (Nebel, Weiß, Graphit) und erst dann über Schatten. Schatten sind mehrlagig, kühl getönt und so weich, dass sie fast wie eine zweite Haarlinie wirken.</p>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Eckradien</h3></div>
+    <div class="radii">
+      <figure><div class="shape" style="border-radius:2px"></div><figcaption><b>2 px</b>Balken, Cursor</figcaption></figure>
+      <figure><div class="shape" style="border-radius:8px"></div><figcaption><b>8 px</b>Buttons, Inputs, Chips</figcaption></figure>
+      <figure><div class="shape" style="border-radius:10px"></div><figcaption><b>10 px</b>Eingabegruppe, Zitatkarte</figcaption></figure>
+      <figure><div class="shape" style="border-radius:16px"></div><figcaption><b>16 px</b>Karten, Sektionsblätter</figcaption></figure>
+      <figure><div class="shape" style="border-radius:24px"></div><figcaption><b>24 px</b>FAQ, große Karten</figcaption></figure>
+      <figure><div class="shape" style="border-radius:32px"></div><figcaption><b>32 px</b>Creme-Band</figcaption></figure>
+      <figure><div class="shape" style="border-radius:999px"></div><figcaption><b>Pill</b>Badges, Pill-CTA, Avatare</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Schatten</h3><p class="small">Basisfarbe rgba(22, 26, 30). Negativer Spread, damit der Schatten unter dem Objekt bleibt. Auf Graphit gibt es keine Schatten, nur hellere Ebenen und Linien mit 12 % Weiß.</p></div>
+    <div class="shadows">
+      <figure><div class="card" style="box-shadow:inset 0 0 0 1px var(--line)"></div><figcaption class="caption"><b style="color:var(--ink)">Linie</b> · Standard für Karten auf Weiß</figcaption></figure>
+      <figure><div class="card" style="box-shadow:var(--shadow-1)"></div><figcaption class="caption"><b style="color:var(--ink)">Stufe 1</b> · Karten auf Nebel, Scores</figcaption></figure>
+      <figure><div class="card" style="box-shadow:var(--shadow-float)"></div><figcaption class="caption"><b style="color:var(--ink)">Schwebend</b> · UI-Fragment über Bild, einmal pro Seite</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 07 KOMPONENTEN ================= -->
+<section class="sheet" id="komponenten" aria-labelledby="h-komp">
+  <div class="chapter-head">
+    <span class="eyebrow"><span class="n">07</span>Komponenten</span>
+    <h2 class="display-lg" id="h-komp">Wenige Bausteine, sorgfältig gebaut.</h2>
+    <p class="lead">Alle Komponenten hier sind echt und bedienbar. Die Werte stammen aus den Tokens in <code>DESIGN.md</code>.</p>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Buttons</h3><p class="small">Beschriftung immer Verb plus Objekt. Ein blauer Button pro Bildschirmhöhe.</p></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" type="button">Kostenlos prüfen</button>
+      <button class="btn btn-secondary" type="button">Mehr erfahren</button>
+      <button class="btn btn-ghost" type="button">Beispiel-Report ansehen</button>
+      <button class="btn btn-pill" type="button">Unverbindlich anfragen<span class="cap"><svg width="16" height="16"><use href="#i-arrow"/></svg></span></button>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Variante</th><th>Einsatz</th><th>Fläche / Text</th><th>Radius · Höhe</th></tr></thead>
+      <tbody>
+        <tr><td>Primär</td><td>Scan starten, Report kaufen</td><td class="num">#2F68DB / #FFFFFF · Hover #264EB4</td><td class="num">8 px · 40 px</td></tr>
+        <tr><td>Sekundär</td><td>Weiterführende Inhalte</td><td class="num">#E9E9EB / #1A1E23</td><td class="num">8 px · 40 px</td></tr>
+        <tr><td>Kontur</td><td>Alternativen neben Primär</td><td class="num">transparent / #1A1E23 · Linie #D4D7D7</td><td class="num">8 px · 40 px</td></tr>
+        <tr><td>Pill-CTA</td><td>Fix anfragen, Beratung</td><td class="num">#1A1E23 / #FFFFFF · Kappe weiß</td><td class="num">Pill · 44 px</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>URL-Eingabe</h3><p class="small">Der wichtigste Baustein der Seite. Feld und Button bilden ein Objekt. Probieren Sie es aus: Die Eingabe wird nur hier im Handbuch geprüft, nichts wird gesendet.</p></div>
+    <form id="demo-form" novalidate>
+      <label for="demo-url" class="sr-only">Website-Adresse</label>
+      <div class="url-group"><input id="demo-url" name="url" type="text" inputmode="url" autocomplete="url" placeholder="ihre-website.de" aria-describedby="demo-msg"><button class="btn btn-primary" type="submit">Kostenlos prüfen</button></div>
+      <p class="form-msg caption" id="demo-msg" aria-live="polite">Kostenlos · Ohne Anmeldung · Ergebnis direkt im Browser</p>
+    </form>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Score-Karten</h3><p class="small">Vier Bereiche, je 0–100. Die Zahl ist neutral in Tinte, der Status steht im Badge. Schwellen: ab 80 „Gut“, 50–79 „Verbesserbar“, unter 50 „Kritisch“. <b>Beispielwerte.</b></p></div>
+    <div class="panel" style="background:var(--mist)">
+      <div class="scores">
+        <div class="score"><div class="top"><span class="area"><svg width="18" height="18"><use href="#i-seo"/></svg>SEO</span><span class="badge b-warn">Verbesserbar</span></div><div class="val"><b>68</b><span>/100</span></div><div class="bar"><i style="width:68%"></i></div></div>
+        <div class="score"><div class="top"><span class="area"><svg width="18" height="18"><use href="#i-geo"/></svg>GEO</span><span class="badge b-ok">Gut</span></div><div class="val"><b>86</b><span>/100</span></div><div class="bar"><i style="width:86%"></i></div></div>
+        <div class="score"><div class="top"><span class="area"><svg width="18" height="18"><use href="#i-a11y"/></svg>Barrierefreiheit</span><span class="badge b-warn">Verbesserbar</span></div><div class="val"><b>57</b><span>/100</span></div><div class="bar"><i style="width:57%"></i></div></div>
+        <div class="score"><div class="top"><span class="area"><svg width="18" height="18"><use href="#i-privacy"/></svg>Datenschutz</span><span class="badge b-err">Kritisch</span></div><div class="val"><b>41</b><span>/100</span></div><div class="bar"><i style="width:41%"></i></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Prüfzeilen &amp; Badges</h3><p class="small">Jede Zeile: Icon, Befund, ein Satz Erklärung, Status. Badges sagen „Bestanden“, „Prüfen“, „Kritisch“, nie „Fehler!“ oder „Gefahr“.</p></div>
+    <div class="checks">
+      <div class="check"><svg width="20" height="20"><use href="#i-cookie"/></svg><div><p class="t">Cookie-Banner blockiert Tracker vor Einwilligung</p><p class="s">Google Analytics lädt erst nach Klick auf „Akzeptieren“.</p></div><span class="badge b-ok">Bestanden</span></div>
+      <div class="check"><svg width="20" height="20"><use href="#i-doc"/></svg><div><p class="t">Schriften werden von externen Servern geladen</p><p class="s">2 Schriftdateien von fonts.gstatic.com, bevor eine Einwilligung vorliegt.</p></div><span class="badge b-err">Kritisch</span></div>
+      <div class="check"><svg width="20" height="20"><use href="#i-speed"/></svg><div><p class="t">Ladezeit auf Mobilgeräten</p><p class="s">Largest Contentful Paint 3,4 s. Ziel: unter 2,5 s.</p></div><span class="badge b-warn">Prüfen</span></div>
+      <div class="check"><svg width="20" height="20"><use href="#i-link"/></svg><div><p class="t">Defekte Links</p><p class="s">Keine defekten internen Links gefunden.</p></div><span class="badge b-ok">Bestanden</span></div>
+    </div>
+    <div class="btn-row"><span class="badge b-ok">Bestanden</span><span class="badge b-warn">Prüfen</span><span class="badge b-err">Kritisch</span><span class="badge b-info">Neu</span><span class="eyebrow">Eyebrow-Chip</span><span class="pill">3.420 Prüfungen</span></div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Dunkle Bento-Karten</h3><p class="small">Nur im Graphit-Band. Zweitoniger Titel, Pfeil-Quadrat oben rechts, unten ein angeschnittenes UI-Fragment.</p></div>
+    <div class="sheet dark" style="padding:24px;border-radius:var(--r-lg)">
+      <div class="bento">
+        <div class="card"><div class="h"><p class="two-tone">Der Report <em>zeigt jeden Fund mit Fundstelle und Lösung</em></p><span class="sqbtn"><svg width="16" height="16"><use href="#i-arrow-ne"/></svg></span></div>
+          <div class="log"><div><span>Externe Schriften entfernt</span><span class="ok">✓ Behoben</span></div><div><span>Alt-Texte ergänzt (14)</span><span class="ok">✓ Behoben</span></div><div><span>Strukturierte Daten</span><span class="run">Läuft …</span></div></div></div>
+        <div class="card"><div class="h"><p class="two-tone">GEO-Check <em>prüft, ob KI-Suchen Ihre Seite verstehen</em></p><span class="sqbtn"><svg width="16" height="16"><use href="#i-arrow-ne"/></svg></span></div>
+          <pre class="term"><span class="c">$</span> <span class="w">curl</span> ihre-website.de/robots.txt
+User-agent: GPTBot
+Allow: /
+<span class="c">$</span> <span class="w">curl</span> ihre-website.de/llms.txt
+<span class="w">200 OK</span> · 1,2 KB</pre></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>FAQ-Akkordeon</h3></div>
+    <div class="faq">
+      <details open><summary>Ersetzt der Scan eine Rechtsberatung?<span class="pm"><svg class="p" width="12" height="12"><use href="#i-plus"/></svg><svg class="m" width="12" height="12"><use href="#i-minus"/></svg></span></summary><p>Nein. Der Webfix-Scan ist eine technische Prüfung und ersetzt keine Rechtsberatung. Er zeigt Ihnen, wo technische Ursachen für rechtliche Risiken liegen können.</p></details>
+      <details><summary>Was kostet der ausführliche Report?<span class="pm"><svg class="p" width="12" height="12"><use href="#i-plus"/></svg><svg class="m" width="12" height="12"><use href="#i-minus"/></svg></span></summary><p>Der PDF-Report kostet einmalig 29,99 €. Der Scan und die vier Scores sind kostenlos.</p></details>
+      <details><summary>Muss ich mich anmelden?<span class="pm"><svg class="p" width="12" height="12"><use href="#i-plus"/></svg><svg class="m" width="12" height="12"><use href="#i-minus"/></svg></span></summary><p>Nein. Sie geben Ihre URL ein und sehen das Ergebnis direkt im Browser.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 08 BILDSPRACHE ================= -->
+<section class="sheet" id="bildsprache" aria-labelledby="h-bild">
+  <div class="chapter-head">
+    <span class="eyebrow"><span class="n">08</span>Bildsprache</span>
+    <h2 class="display-lg" id="h-bild">Das Produkt ist das Bild.</h2>
+    <p class="lead">Die wichtigste Bildsprache von Webfix sind echte, fein gestaltete UI-Fragmente: Scores, Prüfzeilen, Code. Fotografie ergänzt sie, Illustrationen gibt es nicht.</p>
+  </div>
+
+  <div class="block">
+    <div class="photo-rules">
+      <div class="photo"><div class="ph ph-ui"><div class="mini"><div></div><div></div><div></div><div class="b"></div></div></div><div class="txt"><b>1 · Produkt-Fragmente</b><p class="small">Ausschnitte aus Score, Report und Prüfprotokoll, schwebend auf ruhigem Grund. Immer mit realistischen, als Beispiel gekennzeichneten Inhalten.</p></div></div>
+      <div class="photo"><div class="ph ph-desk"></div><div class="txt"><b>2 · Arbeitssituationen</b><p class="small">Echte Menschen an echten Arbeitsplätzen, natürliches Tageslicht, kühl-neutrale Farbstimmung. Gerne mit Bildschirm, nie gestellt.</p></div></div>
+      <div class="photo"><div class="ph ph-texture"></div><div class="txt"><b>3 · Ruhige Flächen</b><p class="small">Unscharfe Architektur, Papier, Landschaft in Nebeltönen als Grund für Produkt-Fragmente. Kein Motiv, das ablenkt.</p></div></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="grid-2">
+      <div class="panel"><h4>Fotos, die passen</h4><ul class="list yes">
+        <li><svg width="18" height="18"><use href="#i-check"/></svg>Kühle, leicht entsättigte Farbwelt, die zu Nebel und Graphit passt.</li>
+        <li><svg width="18" height="18"><use href="#i-check"/></svg>Inhaberinnen und Inhaber kleiner Unternehmen, Agenturen, Werkstätten, Praxen.</li>
+        <li><svg width="18" height="18"><use href="#i-check"/></svg>Viel Luft im Bild, damit UI-Karten darauf Platz haben.</li>
+        <li><svg width="18" height="18"><use href="#i-check"/></svg>Eckradius 16 px, wie alle Flächen.</li>
+      </ul></div>
+      <div class="panel"><h4>Fotos, die nicht passen</h4><ul class="list no">
+        <li><svg width="18" height="18"><use href="#i-x"/></svg>Hacker im Kapuzenpulli, grüner Code-Regen, Totenköpfe.</li>
+        <li><svg width="18" height="18"><use href="#i-x"/></svg>Vorhängeschlösser, Paragrafen-Zeichen, Richterhammer.</li>
+        <li><svg width="18" height="18"><use href="#i-x"/></svg>Händeschütteln, Daumen hoch, gestellte Teams vor Whiteboards.</li>
+        <li><svg width="18" height="18"><use href="#i-x"/></svg>KI-generierte Personen, Roboter, leuchtende Gehirne.</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Icons</h3><p class="small">Linien-Icons auf einem 24-px-Raster, 1,5 px Strichstärke, runde Enden und Ecken. Immer in Tinte oder Schiefer, nie farbig gefüllt. Fehlende Icons aus Phosphor (Regular) oder Lucide ergänzen und auf 1,5 px anpassen.</p></div>
+    <div class="icon-anatomy">
+      <svg viewBox="0 0 24 24" role="img" aria-label="Icon-Raster mit Lupe" style="background:var(--mist);border-radius:12px">
+        <g stroke="#D4D7D7" stroke-width=".05">{{ICON_GRID}}</g>
+        <rect x="2" y="2" width="20" height="20" fill="none" stroke="#87BFFB" stroke-width=".08" stroke-dasharray=".3 .3"/>
+        <use href="#i-seo" width="24" height="24" style="color:var(--ink)"/>
+      </svg>
+      <div class="icon-grid">
+        <figure><svg width="28" height="28"><use href="#i-seo"/></svg>SEO</figure>
+        <figure><svg width="28" height="28"><use href="#i-geo"/></svg>GEO</figure>
+        <figure><svg width="28" height="28"><use href="#i-a11y"/></svg>Barriere&shy;freiheit</figure>
+        <figure><svg width="28" height="28"><use href="#i-privacy"/></svg>Datenschutz &amp; Recht</figure>
+        <figure><svg width="28" height="28"><use href="#i-doc"/></svg>Report</figure>
+        <figure><svg width="28" height="28"><use href="#i-tool"/></svg>Fix</figure>
+        <figure><svg width="28" height="28"><use href="#i-cookie"/></svg>Cookies</figure>
+        <figure><svg width="28" height="28"><use href="#i-speed"/></svg>Ladezeit</figure>
+        <figure><svg width="28" height="28"><use href="#i-link"/></svg>Links</figure>
+        <figure><svg width="28" height="28"><use href="#i-clock"/></svg>Dauer</figure>
+        <figure><svg width="28" height="28"><use href="#i-mail"/></svg>E-Mail</figure>
+        <figure><svg width="28" height="28"><use href="#i-check"/></svg>Bestanden</figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 09 BEWEGUNG ================= -->
+<section class="sheet" id="bewegung" aria-labelledby="h-motion">
+  <div class="chapter-head">
+    <span class="eyebrow"><span class="n">09</span>Bewegung</span>
+    <h2 class="display-lg" id="h-motion">Spürbar beim Erscheinen, danach still.</h2>
+    <p class="lead">Bewegung hilft beim Lesen und lenkt nie ab. Es gibt genau eine Inszenierung, die Hero-Headline. Alles andere ist kurz, weich und einmalig.</p>
+  </div>
+
+  <div class="block">
+    <div class="motion-demo" id="motion-demo">
+      <h3 aria-label="Wie gut ist Ihre Website wirklich?"><span class="w" style="--i:0">Wie</span> <span class="w" style="--i:1">gut</span> <span class="w" style="--i:2">ist</span> <span class="w" style="--i:3">Ihre</span> <span class="w" style="--i:4">Website</span> <span class="w" style="--i:5">wirklich?</span></h3>
+      <button class="btn btn-secondary" type="button" id="motion-play">Animation abspielen</button>
+      <p class="caption">Wortweise: Deckkraft 0 → 1, 8 px nach oben, Unschärfe 4 → 0 px · 500 ms · 40 ms Versatz</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="curve">
+      <figure><svg viewBox="0 0 120 80" role="img" aria-label="Kurve ease-out"><path d="M10 70 C 36.4 70, 30 10, 110 10" fill="none" stroke="var(--blue)" stroke-width="2"/><path d="M10 70 H110 M10 70 V10" stroke="var(--line-strong)" stroke-width="1" fill="none"/></svg><figcaption class="small"><b style="color:var(--ink)">Erscheinen</b><br><code>cubic-bezier(.22, 1, .36, 1)</code><br>600 ms · Blöcke beim Scrollen</figcaption></figure>
+      <figure><svg viewBox="0 0 120 80" role="img" aria-label="Kurve für Worte"><path d="M10 70 C 30 28, 40 10, 110 10" fill="none" stroke="var(--blue)" stroke-width="2"/><path d="M10 70 H110 M10 70 V10" stroke="var(--line-strong)" stroke-width="1" fill="none"/></svg><figcaption class="small"><b style="color:var(--ink)">Hero-Worte</b><br><code>cubic-bezier(.2, .7, .3, 1)</code><br>500 ms · 40 ms Versatz</figcaption></figure>
+      <figure><svg viewBox="0 0 120 80" role="img" aria-label="Kurve ease"><path d="M10 70 C 35 70, 35 10, 110 10" fill="none" stroke="var(--blue)" stroke-width="2"/><path d="M10 70 H110 M10 70 V10" stroke="var(--line-strong)" stroke-width="1" fill="none"/></svg><figcaption class="small"><b style="color:var(--ink)">Hover</b><br><code>ease</code><br>150–200 ms · Farbe, Fläche, Schatten</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="table-wrap"><table>
+      <thead><tr><th>Bewegung</th><th>Dauer</th><th>Kurve</th><th>Regel</th></tr></thead>
+      <tbody>
+        <tr><td>Hero-Headline</td><td class="num">500 ms + 40 ms/Wort</td><td class="num">.2, .7, .3, 1</td><td>Einmal pro Seitenaufruf</td></tr>
+        <tr><td>Block erscheint</td><td class="num">600 ms</td><td class="num">.22, 1, .36, 1</td><td>Einmalig, 16 px Weg, kein Parallax</td></tr>
+        <tr><td>Hover Farbe/Fläche</td><td class="num">150–200 ms</td><td class="num">ease</td><td>Keine Skalierung von Karten</td></tr>
+        <tr><td>Button gedrückt</td><td class="num">120 ms</td><td class="num">ease</td><td>1 px nach unten</td></tr>
+        <tr><td>Score zählt hoch</td><td class="num">800 ms</td><td class="num">.22, 1, .36, 1</td><td>Beim ersten Sichtbarwerden, Balken wächst mit</td></tr>
+        <tr><td>Logo-/Zitatband</td><td class="num">120–190 s</td><td class="num">linear</td><td>Pausiert bei Hover und Fokus</td></tr>
+        <tr><td>UI-Schleifen</td><td class="num">4–12 s</td><td class="num">ease</td><td>„Läuft → Bestanden“, ruhig</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small">Bei <code>prefers-reduced-motion: reduce</code> erscheint alles sofort und ohne Bewegung. Das ist keine Option, sondern Pflicht.</p>
+  </div>
+</section>
+
+<!-- ================= 10 SPRACHE ================= -->
+<section class="sheet" id="sprache" aria-labelledby="h-sprache">
+  <div class="chapter-head">
+    <span class="eyebrow"><span class="n">10</span>Sprache</span>
+    <h2 class="display-lg" id="h-sprache">Klar, ruhig, kompetent. Und immer per Sie.</h2>
+    <p class="lead">Webfix spricht wie eine erfahrene Fachperson, die Ihnen am Tisch gegenübersitzt: sachlich, freundlich, ohne Fachjargon, der nicht erklärt wird. Risiken werden benannt, nie dramatisiert.</p>
+  </div>
+
+  <div class="block">
+    <div class="grid-3">
+      <div class="panel white"><h4>Sie-Form</h4><p class="small">Rechtsthemen und Abmahnangst brauchen Vertrauen und Seriosität. Wir siezen überall: Website, E-Mail, Report, Social Media.</p></div>
+      <div class="panel white"><h4>Kurze Sätze</h4><p class="small">Ein Gedanke pro Satz, aktiv formuliert. Zahlen statt Adjektive: „3,4 s Ladezeit“ statt „sehr langsam“.</p></div>
+      <div class="panel white"><h4>Erklären, dann benennen</h4><p class="small">Fachbegriffe beim ersten Auftreten in einem Halbsatz erklären: „GEO, also die Sichtbarkeit in KI-Suchen wie ChatGPT“.</p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>So schreiben wir</h3></div>
+    <div class="says">
+      <div class="row h"><div>So schreiben wir</div><div>Nicht so</div><div class="why">Warum</div></div>
+      <div class="row"><div class="yes">„Im Bereich Datenschutz haben wir Punkte gefunden, die ein Abmahnrisiko darstellen können.“</div><div class="no">„Achtung! Sie werden abgemahnt!“</div><div class="why">Kein Angst-Marketing. Risiken sachlich benennen.</div></div>
+      <div class="row"><div class="yes">„Der Webfix-Scan ist eine technische Prüfung und ersetzt keine Rechtsberatung.“</div><div class="no">„Mit Webfix sind Sie abmahnsicher.“</div><div class="why">Garantien wie „100 % rechtssicher“ sind selbst abmahnfähig.</div></div>
+      <div class="row"><div class="yes">„Tools, die Daten ohne geeignete Grundlage in die USA übertragen“</div><div class="no">„Illegale US-Tools“</div><div class="why">US-Tools sind nicht automatisch unzulässig (EU-US Data Privacy Framework).</div></div>
+      <div class="row"><div class="yes">„Barrierefreiheit ist für viele Unternehmen Pflicht.“</div><div class="no">„Barrierefreiheit ist jetzt für alle Pflicht.“</div><div class="why">Das BFSG nimmt z. B. Kleinstunternehmen bei Dienstleistungen aus.</div></div>
+      <div class="row"><div class="yes">„Ihre Seite lädt Schriften von externen Servern, bevor eine Einwilligung vorliegt.“</div><div class="no">„Google-Fonts-Verstoß erkannt!!“</div><div class="why">Befund konkret beschreiben, ohne Urteil und Ausrufezeichen.</div></div>
+      <div class="row"><div class="yes">„Kostenlos prüfen“</div><div class="no">„Jetzt loslegen 🚀“</div><div class="why">Buttons sagen, was passiert. Keine Emojis.</div></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Pflichthinweis</h3><p class="small">Steht im Footer jeder Seite, unter dem Datenschutz-Score und auf der letzten Seite jedes Reports. Wortlaut nicht verändern.</p></div>
+    <div class="quote-legal"><p>Der Webfix-Scan ist eine technische Prüfung und ersetzt keine Rechtsberatung.</p></div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Mikrotexte</h3></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Situation</th><th>Text</th><th>Regel</th></tr></thead>
+      <tbody>
+        <tr><td>Haupt-Button</td><td>Kostenlos prüfen</td><td>Verb + Nutzen, 1–3 Wörter</td></tr>
+        <tr><td>Report-Kauf</td><td>Report für 29,99 € anfordern</td><td>Preis im Button, keine Überraschung</td></tr>
+        <tr><td>Fix-Anfrage</td><td>Unverbindlich anfragen</td><td>Druck rausnehmen</td></tr>
+        <tr><td>Ungültige URL</td><td>Bitte geben Sie eine Website-Adresse ein, z. B. ihre-website.de.</td><td>Sagen, wie es richtig geht</td></tr>
+        <tr><td>Scan läuft</td><td>Wir prüfen Ihre Website. Das dauert meist wenige Minuten.</td><td>Erwartung setzen</td></tr>
+        <tr><td>Scan fertig</td><td>Ihr Ergebnis ist da.</td><td>Kurz, ohne Jubel</td></tr>
+        <tr><td>Website nicht erreichbar</td><td>Wir konnten ihre-website.de nicht erreichen. Prüfen Sie die Schreibweise oder versuchen Sie es in ein paar Minuten erneut.</td><td>Ursache + nächster Schritt, keine Entschuldigungsfloskel</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><h3>Schreibweisen &amp; Begriffe</h3></div>
+    <dl class="glossary">
+      <div><dt>Webfix</dt><dd>Immer so. Nie WebFix, WEBFIX, web-fix. Im Fließtext nie als Logo.</dd></div>
+      <div><dt>Scan</dt><dd>Die kostenlose Prüfung. Nicht „Audit“, nicht „Analyse-Tool“.</dd></div>
+      <div><dt>Score</dt><dd>Wert von 0 bis 100 je Bereich. Plural: Scores.</dd></div>
+      <div><dt>Report</dt><dd>Der ausführliche PDF-Bericht für 29,99 €.</dd></div>
+      <div><dt>Fix</dt><dd>Die Umsetzung durch das Webfix-Team, individuelles Angebot.</dd></div>
+      <div><dt>GEO</dt><dd>Generative Engine Optimization: Sichtbarkeit in KI-Suchen wie ChatGPT, Perplexity, Google AI Overviews.</dd></div>
+      <div><dt>Barrierefreiheit</dt><dd>Nicht „Accessibility“ oder „a11y“ in Kundentexten. Gesetz: BFSG, Standard: WCAG.</dd></div>
+      <div><dt>Datenschutz &amp; Recht</dt><dd>Name des vierten Bereichs. Umfasst DSGVO, Impressum, Cookies, Tracking.</dd></div>
+      <div><dt>KI</dt><dd>Nicht „AI“. Produktnamen (ChatGPT, Lovable) bleiben, wie sie sind.</dd></div>
+      <div><dt>Website</dt><dd>Nicht „Webseite“ für den ganzen Auftritt, nicht „Homepage“.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ================= 11 VORBILD ================= -->
+<section class="sheet dark" id="vorbild" aria-labelledby="h-vorbild">
+  <div class="chapter-head">
+    <span class="eyebrow"><span class="n">11</span>Vorbildfunktion</span>
+    <h2 class="display-lg" id="h-vorbild">Was wir bei anderen prüfen, muss bei uns stimmen.</h2>
+    <p class="lead">Ein Prüf-Tool mit fehlerhafter eigener Website verliert sofort jede Glaubwürdigkeit. Diese Regeln gelten für jede Webfix-Oberfläche, jede Kampagnenseite und jede E-Mail.</p>
+  </div>
+  <div class="bento rules">
+    <div class="card" style="padding-bottom:24px"><div class="h"><p class="two-tone">SEO <em>Titel, Meta-Beschreibung, eine H1, saubere Überschriften-Hierarchie, strukturierte Daten.</em></p><span class="sqbtn"><svg width="16" height="16"><use href="#i-seo"/></svg></span></div></div>
+    <div class="card" style="padding-bottom:24px"><div class="h"><p class="two-tone">GEO <em>robots.txt erlaubt KI-Crawler, llms.txt vorhanden, klare Antworten im FAQ.</em></p><span class="sqbtn"><svg width="16" height="16"><use href="#i-geo"/></svg></span></div></div>
+    <div class="card" style="padding-bottom:24px"><div class="h"><p class="two-tone">Barrierefreiheit <em>Kontrast AA, sichtbarer Fokus, Alt-Texte, Labels, reduzierte Bewegung, Tastaturbedienung.</em></p><span class="sqbtn"><svg width="16" height="16"><use href="#i-a11y"/></svg></span></div></div>
+    <div class="card" style="padding-bottom:24px"><div class="h"><p class="two-tone">Datenschutz <em>Schriften selbst gehostet, keine Tracker vor Einwilligung, Formulare per HTTPS, Impressum &amp; Datenschutz vollständig.</em></p><span class="sqbtn"><svg width="16" height="16"><use href="#i-privacy"/></svg></span></div></div>
+  </div>
+  <hr class="rule">
+  <div class="block">
+    <div class="grid-2">
+      <div><p class="small" style="color:var(--white);font-weight:600;margin-bottom:8px">Fokus-Stil</p><p class="small">2 px Ring in Signalblau mit 2 px Abstand, auf Dunkel in #659FFD. Der Fokus wird nie entfernt, nur gestaltet.</p></div>
+      <div><p class="small" style="color:var(--white);font-weight:600;margin-bottom:8px">Schriften</p><p class="small">WOFF2-Dateien liegen in <code>brand/fonts/</code> und werden vom eigenen Server ausgeliefert. Dieses Handbuch bettet sie selbst ein und lädt nichts von Google.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 12 ANWENDUNGEN ================= -->
+<section class="sheet" id="anwendungen" aria-labelledby="h-anw">
+  <div class="chapter-head">
+    <span class="eyebrow"><span class="n">12</span>Anwendungen</span>
+    <h2 class="display-lg" id="h-anw">Ein System, viele Formate.</h2>
+    <p class="lead">Beispiele, wie die Regeln zusammenspielen. Namen, Adressen und Werte sind Muster.</p>
+  </div>
+
+  <div class="apps">
+    <div class="app span-12">
+      <div class="mock-site" aria-label="Muster: Website-Hero">
+        <div class="mock-nav"><svg class="wm wm-std" viewBox="{{WM_VB}}" aria-hidden="true"><use href="#wm"/></svg><nav><span>So funktioniert's</span><span>Report</span><span>Fix</span><span>Preise</span><span>FAQ</span></nav><span class="btn btn-primary">Kostenlos prüfen</span></div>
+        <div class="mock-hero">
+          <span class="eb">Website-Check für SEO · KI-Sichtbarkeit · Barrierefreiheit · Datenschutz</span>
+          <h4>Wie gut ist Ihre<br>Website wirklich?</h4>
+          <p>Webfix prüft Ihre Website in wenigen Minuten und zeigt Ihnen mit einem klaren Score, wo Sie Kunden verlieren und wo rechtliche Risiken lauern.</p>
+          <div class="url-group"><input type="text" placeholder="ihre-website.de" aria-label="Muster-Eingabe" tabindex="-1" readonly><span class="btn btn-primary">Kostenlos prüfen</span></div>
+          <span class="micro">Kostenlos · Ohne Anmeldung · Ergebnis direkt im Browser</span>
+        </div>
+        <div class="mock-window">
+          <div class="score"><div class="top"><span class="area">SEO</span></div><div class="val"><b>68</b><span>/100</span></div><div class="bar"><i style="width:68%"></i></div></div>
+          <div class="score"><div class="top"><span class="area">GEO</span></div><div class="val"><b>86</b><span>/100</span></div><div class="bar"><i style="width:86%"></i></div></div>
+          <div class="score"><div class="top"><span class="area">Barrierefreiheit</span></div><div class="val"><b>57</b><span>/100</span></div><div class="bar"><i style="width:57%"></i></div></div>
+          <div class="score"><div class="top"><span class="area">Datenschutz</span></div><div class="val"><b>41</b><span>/100</span></div><div class="bar"><i style="width:41%"></i></div></div>
+        </div>
+      </div>
+      <p class="caption">Website-Hero · weißes Blatt, Serif-Headline, URL-Eingabe als ein Objekt, Produkt-Fragment darunter</p>
+    </div>
+
+    <div class="app span-5">
+      <div class="social" aria-label="Muster: Social-Media-Post">
+        <span class="eb">Website-Check</span>
+        <h4>Ein Scan. Vier Scores. Klare Antworten.</h4>
+        <div class="foot"><svg class="wm wm-std" viewBox="{{WM_VB}}" aria-hidden="true"><use href="#wm"/></svg><span>Kostenlos prüfen →</span></div>
+      </div>
+      <p class="caption">Social-Post 1080 × 1080 · Nebelgrund, eine Aussage, Wortmarke unten links</p>
+    </div>
+
+    <div class="app span-7">
+      <div class="report" style="max-width:340px;justify-self:center;width:100%" aria-label="Muster: Report-Deckblatt">
+        <svg class="wm wm-std" viewBox="{{WM_VB}}" aria-hidden="true"><use href="#wm"/></svg>
+        <div class="ttl"><small>Website-Report · 14.10.2026</small><h4>Ihr Ergebnis im Detail</h4><p>beispiel-website.de</p></div>
+        <div style="display:grid;gap:12px">
+          <div class="rows"><div><span>SEO</span><b>68</b></div><div><span>GEO</span><b>86</b></div><div><span>Barrierefreiheit</span><b>57</b></div><div><span>Datenschutz &amp; Recht</span><b>41</b></div></div>
+          <p class="legal">Der Webfix-Scan ist eine technische Prüfung und ersetzt keine Rechtsberatung.</p>
+        </div>
+      </div>
+      <p class="caption">PDF-Report A4 · Deckblatt weiß, Ergebnis-Übersicht, Pflichthinweis</p>
+    </div>
+
+    <div class="app span-6">
+      <div class="biz">
+        <div class="card85 front" aria-label="Muster: Visitenkarte Vorderseite"><svg class="wm wm-dark" viewBox="{{WM_VB}}" aria-hidden="true"><use href="#wm"/></svg></div>
+        <div class="card85 back" aria-label="Muster: Visitenkarte Rückseite"><div><p class="n">Vorname Nachname</p><p class="r">Website-Prüfung &amp; Umsetzung</p></div><div class="c"><span>name@webfix.de<br>webfix.de</span><svg class="wm wm-std" viewBox="{{WM_VB}}" aria-hidden="true"><use href="#wm"/></svg></div></div>
+      </div>
+      <p class="caption">Visitenkarte 85 × 55 mm · Vorderseite Graphit, Rückseite Weiß</p>
+    </div>
+
+    <div class="app span-6">
+      <div class="mail" aria-label="Muster: E-Mail">
+        <p>Guten Tag Frau Muster,</p>
+        <p>Ihr Webfix-Report für beispiel-website.de ist fertig. Sie finden ihn im Anhang. Die drei wichtigsten Punkte stehen auf Seite 2.</p>
+        <div class="sig">
+          <svg class="wm wm-std" viewBox="{{WM_VB}}" aria-hidden="true"><use href="#wm"/></svg>
+          <p><b>Vorname Nachname</b> · Website-Prüfung &amp; Umsetzung<br>webfix.de · name@webfix.de</p>
+          <p class="caption">Der Webfix-Scan ist eine technische Prüfung und ersetzt keine Rechtsberatung.</p>
+        </div>
+      </div>
+      <p class="caption">E-Mail-Signatur · Wortmarke 84 px, Text in Inter Tight bzw. Arial als Fallback</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DATEIEN ================= -->
+<section class="sheet" id="dateien" aria-labelledby="h-dateien">
+  <div class="chapter-head">
+    <span class="eyebrow"><span class="n">→</span>Dateien</span>
+    <h2 class="headline-md" id="h-dateien" style="font-size:36px">Alle Markendateien liegen im Repository.</h2>
+    <p class="small">Pfade relativ zum Repository <code>DevBero/Webfix</code>. Die Wortmarke wird aus <code>brand/src/</code> reproduzierbar erzeugt.</p>
+  </div>
+  <div class="table-wrap files"><table>
+    <thead><tr><th>Datei</th><th>Inhalt</th></tr></thead>
+    <tbody>
+      <tr><td>brand/logo/webfix-wordmark.svg</td><td>Wortmarke Standard, Tinte mit blauem Fix-Punkt</td></tr>
+      <tr><td>brand/logo/webfix-wordmark-on-dark.svg</td><td>Wortmarke weiß mit hellblauem Punkt, für Graphit</td></tr>
+      <tr><td>brand/logo/webfix-wordmark-mono-ink.svg</td><td>Einfarbig Tinte</td></tr>
+      <tr><td>brand/logo/webfix-wordmark-mono-white.svg</td><td>Einfarbig Weiß, für Signalblau und Fotos</td></tr>
+      <tr><td>brand/logo/webfix-icon.svg</td><td>Icon dunkel (Standard)</td></tr>
+      <tr><td>brand/logo/webfix-icon-light.svg</td><td>Icon hell</td></tr>
+      <tr><td>brand/logo/webfix-icon-blue.svg</td><td>Icon auf Signalblau, für Social-Avatare</td></tr>
+      <tr><td>brand/logo/favicon.svg</td><td>Favicon</td></tr>
+      <tr><td>brand/fonts/*.woff2</td><td>Newsreader, Inter Tight, JetBrains Mono (variabel, lateinisch) inkl. OFL-Lizenzen</td></tr>
+      <tr><td>DESIGN.md</td><td>Design-Tokens und Gestaltungsregeln für Website und Agents</td></tr>
+      <tr><td>brand/index.html</td><td>Dieses Handbuch</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="end">
+    <p class="caption">Webfix Markenhandbuch · Version 1.0 · 14.10.2026<br>Der Webfix-Scan ist eine technische Prüfung und ersetzt keine Rechtsberatung.</p>
+    <svg class="wm wm-std" viewBox="{{WM_VB}}" role="img" aria-label="Webfix"><use href="#wm"/></svg>
+  </div>
+</section>
+
+</main>
+</div>
+</div>
+
+<script>
+(() => {
+  // Hex-Werte kopieren
+  document.querySelectorAll('.copy').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const value = btn.dataset.value;
+      const done = () => {
+        btn.classList.add('done');
+        const old = btn.textContent;
+        btn.textContent = 'Kopiert';
+        setTimeout(() => { btn.textContent = old; btn.classList.remove('done'); }, 1200);
+      };
+      try {
+        navigator.clipboard.writeText(value).then(done, () => selectFallback(btn));
+      } catch (e) { selectFallback(btn); }
+    });
+  });
+  function selectFallback(el) {
+    const r = document.createRange();
+    r.selectNodeContents(el);
+    const s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+  }
+
+  // Demo-Formular
+  const form = document.getElementById('demo-form');
+  const input = document.getElementById('demo-url');
+  const msg = document.getElementById('demo-msg');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const v = input.value.trim().replace(/^https?:\/\//i, '').replace(/\/.*$/, '');
+    msg.classList.remove('err', 'ok', 'caption');
+    if (!/^([a-z0-9äöüß-]+\.)+[a-z]{2,}$/i.test(v)) {
+      msg.textContent = 'Bitte geben Sie eine Website-Adresse ein, z. B. ihre-website.de.';
+      msg.classList.add('err');
+      input.setAttribute('aria-invalid', 'true');
+      input.focus();
+    } else {
+      msg.textContent = 'So würde es weitergehen: Wir prüfen ' + v + '. Das dauert meist wenige Minuten. (Nur Demo, es wird nichts gesendet.)';
+      msg.classList.add('ok');
+      input.removeAttribute('aria-invalid');
+    }
+  });
+
+  // Bewegungs-Demo
+  const demo = document.getElementById('motion-demo');
+  document.getElementById('motion-play').addEventListener('click', () => {
+    demo.classList.remove('play');
+    void demo.offsetWidth;
+    demo.classList.add('play');
+  });
+
+  // Aktives Kapitel im Inhaltsverzeichnis
+  const links = [...document.querySelectorAll('.toc a')];
+  const map = new Map(links.map((a) => [a.getAttribute('href').slice(1), a]));
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) {
+          links.forEach((a) => a.removeAttribute('aria-current'));
+          const a = map.get(en.target.id);
+          if (a) a.setAttribute('aria-current', 'true');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    map.forEach((_, id) => { const el = document.getElementById(id); if (el) io.observe(el); });
+  }
+})();
+</script>
